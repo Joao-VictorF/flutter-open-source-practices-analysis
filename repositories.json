@@ -1,3 +1,742 @@
 [
-    "https://github.com/4seer/openflutterecommerceapp"
+  {
+    "type": "Business",
+    "url": "https://github.com/comerc/minsk8",
+    "read": true
+  },
+  {
+    "type": "Business",
+    "url": "https://github.com/4seer/openflutterecommerceapp",
+    "read": true
+  },
+  {
+    "type": "Business",
+    "url": "https://github.com/invoiceninja/flutter-mobile",
+    "read": true
+  },
+  {
+    "type": "Business",
+    "url": "https://github.com/Rahiche/flutter_jobs_app",
+    "read": true
+  },
+  {
+    "type": "Communication",
+    "url": "https://github.com/konifar/droidkaigi2018-flutter",
+    "read": true
+  },
+  {
+    "type": "Communication",
+    "url": "https://github.com/CodemateLtd/FlutterMates",
+    "read": true
+  },
+  {
+    "type": "Communication",
+    "url": "https://github.com/jesusrp98/spacex-go",
+    "read": true
+  },
+  {
+    "type": "Education",
+    "url": "https://github.com/j-j-gajjar/mathematics",
+    "read": true
+  },
+  {
+    "type": "Education",
+    "url": "https://github.com/friebetill/tubecards",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/kserko/CineReel",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/JideGuru/FlutterEbookApp",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/ibhavikmakwana/Fluttery-Filmy",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/MDSADABWASIM/Toughest",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/MotionMobs/Sandwhich",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/deandreamatias/tv-randshow",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/ArizArmeidi/AnimSearch",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/NaserElziadna/doddle",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/Suwayomi/Tachidesk-Sorayomi",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/sumittiware/Aniflix-Flutter",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/csuka1219/Flutter_League",
+    "read": true
+  },
+  {
+    "type": "Entertainment",
+    "url": "https://github.com/regenin/get_games",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/damoonrashidi/bitalarm",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/trentpiercy/trace",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/Blakexx/CryptoTracker",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/kalismeras61/flutter_wallet_ui",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/jerichoi224/MoneyTracker",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/Mufaddal5253110/BudgetBudy",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/piggyvault/piggyvault",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/yash1200/bank_management",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/ReceiptManager/Application",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/shurygindv/currency-alarm",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/AmruthPillai/BeThriftyToday",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/appditto/natrium_wallet_flutter",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/JoinSEEDS/seeds_light_wallet",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/y-pakorn/flutter_web3_auction",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/brownboycodes/HADWIN",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/floranguyen0/mmas-money-tracker",
+    "read": true
+  },
+  {
+    "type": "Finance",
+    "url": "https://github.com/tejasbadone/budgeto",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/MSzalek-Mobile/weight_tracker",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/j-j-gajjar/covid-care",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/adityanjr/covid19-tracker",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://gitlab.com/enjoyingfoss/feeel",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/openfoodfacts/smooth-app",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/artrmz/watermaniac",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/wger-project/flutter",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/trizin/Quit-Smoke-App",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/jerichoi224/WorkoutTracker",
+    "read": true
+  },
+  {
+    "type": "Health and Fitness",
+    "url": "https://github.com/Re4ch-Jay/Meditation_App",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/aryamangodara/Arcade-Plaza",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/VarunS2002/Flutter-Sudoku",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/scitbiz/flutter_pokedex",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/jerald-jacob/Flutter-Apps",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/RedBrogdon/flutterflip",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/anuranBarman/2048",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/renancaraujo/trex-flame",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/boeledi/flutter_crush",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/kevmoo/slide_puzzle",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/deven98/FlutterSolitaire",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/jaysavsani07/math-metrix",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/javipacheco/impossiblocks",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/ITCraftship/truth-or-dare",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/ArizArmeidi/FlutterDex",
+    "read": true
+  },
+  {
+    "type": "Games",
+    "url": "https://github.com/satyamx64/space_empires",
+    "read": true
+  },
+  {
+    "type": "Lifestyle",
+    "url": "https://github.com/benoitletondor/Beer-Me-Up",
+    "read": true
+  },
+  {
+    "type": "Lifestyle",
+    "url": "https://github.com/Tarikul711/flutter-food-delivery-app-ui",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/88srzh/comics_db",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/avirias/Grey",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/roughike/inKino",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/iampawan/Flutter-Music-Player",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/aaronoe/FlutterCinematic",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/moda20/flutter-tunein",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/o-ifeanyi/musicPlayer",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/vellt/GetX-Stream-Music-Player-Flutter",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/vellt/Movies-App-Flutter",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/ErfanRht/MovieLab",
+    "read": true
+  },
+  {
+    "type": "Media",
+    "url": "https://github.com/yon30c/kimoi",
+    "read": true
+  },
+  {
+    "type": "News and Magazine",
+    "url": "https://github.com/jbarr21/flews",
+    "read": true
+  },
+  {
+    "type": "News and Magazine",
+    "url": "https://github.com/theankurkedia/NewsBuzz",
+    "read": true
+  },
+  {
+    "type": "News and Magazine",
+    "url": "https://github.com/j-j-gajjar/FLUTTER_NewsApp",
+    "read": true
+  },
+  {
+    "type": "News and Magazine",
+    "url": "https://github.com/akashlilhare/news_app",
+    "read": true
+  },
+  {
+    "type": "News and Magazine",
+    "url": "https://github.com/Livinglist/Hacki",
+    "read": true
+  },
+  {
+    "type": "Personalization",
+    "url": "https://github.com/rajayogan/flutterui-furnitureapp",
+    "read": true
+  },
+  {
+    "type": "Personalization",
+    "url": "https://github.com/Ivaskuu/dashboard",
+    "read": true
+  },
+  {
+    "type": "Personalization",
+    "url": "https://github.com/juniorise/spooky-mb",
+    "read": true
+  },
+  {
+    "type": "Personalization",
+    "url": "https://github.com/jogboms/tailor_made",
+    "read": true
+  },
+  {
+    "type": "Personalization",
+    "url": "https://github.com/tsvillain/Wallbay",
+    "read": true
+  },
+  {
+    "type": "Personalization",
+    "url": "https://github.com/Spyy004/LifeList",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/Norbert515/BookSearch",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/tuannguyendotme/flutter_todo",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/CarGuo/GSYGithubAppFlutter",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/lzyy/habbit",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/huextrat/Taskist",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/hamaluik/timecop",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/matthewtory/trinity-orientation-2018",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/bimsina/notes-app",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/burhanrashid52/WhatTodo",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/Rohithgilla12/yata",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/ChangJoo-Park/journapi_flutter",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/proninyaroslav/libretrack",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/virlow-voice/virlow-flutter-recorder",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/sarvesh4396/notepad",
+    "read": true
+  },
+  {
+    "type": "Productivity",
+    "url": "https://github.com/mateusz-bak/openreads-android",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/aleksanderwozniak/deer",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/mdanics/fluttergram",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/rohan20/flutter-chat-app",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/iampawan/FlutterWhatsAppClone",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/fablue/lime-flutter",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/efortuna/memechat",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/Ivaskuu/tinder_cards",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/TheAlphamerc/flutter_twitter_clone",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/ahmedgulabkhan/GroupChatApp",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/robertodoering/harpy",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/Big-Fig/Fediverse.app",
+    "read": true
+  },
+  {
+    "type": "Social Network",
+    "url": "https://github.com/redsolver/skyfeed",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/1hanzla100/flutter-yumniastic",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/Tarikul711/flutter-ecommerce",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/Widle-Studio/Grocery-App",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/searchy2/FlutterGames",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/Ivaskuu/plantly",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/gdgluanda/rapidinho",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/LaCoro/ConsumerFlutterApp",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/woosignal/flutter-woocommerce-app",
+    "read": true
+  },
+  {
+    "type": "Shopping",
+    "url": "https://github.com/tejasbadone/flutterzon_bloc",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/dart-flitter/flitter",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/Samaritan1011001/Trovami",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/bimsina/wallpaper",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/memspace/zefyr",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/shaxxx/Signalmeter2",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/bipin000/jagnik",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/pichillilorenzo/flutter_browser_app",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/MDSADABWASIM/You",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/1hanzla100/flutter-weather",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/ArizArmeidi/FlutterWeather",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/KyleKun/one_second_diary",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/proninyaroslav/blink-comparison",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/simonbengtsson/airdash",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/akmadan/voting_dapp",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/ivirtex/networkarch-flutter",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/vellt/RSA-Encryption-Flutter",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/immich-app/immich",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/tejasbadone/EasyWeather",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/musfique113/EncryptX",
+    "read": true
+  },
+  {
+    "type": "Tools",
+    "url": "https://github.com/albemala/emoji-picker",
+    "read": true
+  },
+  {
+    "type": "Travel",
+    "url": "https://github.com/MarcinusX/flutter_ui_challenge_flight_search",
+    "read": true
+  },
+  {
+    "type": "Travel",
+    "url": "https://github.com/bluemix/tourism-demo",
+    "read": true
+  },
+  {
+    "type": "Travel",
+    "url": "https://github.com/Ivaskuu/travel-guide_app",
+    "read": true
+  },
+  {
+    "type": "Travel",
+    "url": "https://github.com/devclub-iitd/ShareACab",
+    "read": true
+  },
+  {
+    "type": "Simulation",
+    "url": "https://github.com/hadiuzzaman524/Barrett-2090-XV-3088-Flutter-Simulation",
+    "read": true
+  }
 ]
