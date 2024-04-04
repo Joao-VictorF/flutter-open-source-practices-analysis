@@ -14,21 +14,21 @@ def fetch_repository_info(repo_url, repo_type):
     token = os.getenv("GITHUB_TOKEN")
     headers = { "Authorization": f"Bearer {token}" }
 
-    api_url = f"https://api.github.com/repos/{owner}/{repo_name}"
+    repository_url = f"https://api.github.com/repos/{owner}/{repo_name}"
     commits_url = f"https://api.github.com/repos/{owner}/{repo_name}/commits?per_page=1&page=1"
 
-    response = requests.get(api_url, headers=headers)
+    repo_response = requests.get(repository_url, headers=headers)
     commits_response = requests.get(commits_url, headers=headers)
 
-    if response.status_code == 200 and commits_response.status_code == 200:
-        repo_info = response.json()
+    if repo_response.status_code == 200 and commits_response.status_code == 200:
+        repo_info = repo_response.json()
         link_header = commits_response.headers.get('Link')
         total_commits = int(link_header.split(';')[1].split('&page=')[-1].split('>')[0])
 
         last_commit_date = None
         if total_commits > 0:
             last_commit_url = f"https://api.github.com/repos/{owner}/{repo_name}/commits?per_page=1"
-            last_commit_response = requests.get(last_commit_url)
+            last_commit_response = requests.get(last_commit_url, headers=headers)
 
             if last_commit_response.status_code != 200:
                 return None
