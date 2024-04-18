@@ -1,16 +1,45 @@
-import json
 import os
+import json
 import argparse
 from datetime import datetime
+
+# Create the sonar-project.properties file
+def createSonarPropertiesFile(clone_path, repository_name, sonarProjectKey):
+    properties_content = f"""
+    sonar.projectKey={sonarProjectKey}
+    sonar.projectName={repository_name}
+    sonar.login=005262c36323025d91963a83b684499a0f841808
+
+    sonar.host.url=http://localhost:9000
+
+    # Source code location.
+    # Path is relative to the sonar-project.properties file. Defaults to .
+    # Use commas to specify more than one folder.
+    sonar.sources=lib
+    sonar.tests=test
+
+    # Encoding of the source code. Default is default system encoding.
+    sonar.sourceEncoding=UTF-8
+
+    # exclude generated files
+    sonar.exclusions=test/**/*_test.mocks.dart,lib/**/*.g.dart
+    """
+
+    with open(os.path.join(clone_path, "sonar-project.properties"), 'w') as file:
+        file.write(properties_content)
 
 # Function to clone GitHub repositories
 def clone_repositories(filtered_data, clone_directory):
     for repo in filtered_data['repositories']:
         clone_url = repo.get('Clone URL')
+        projectKey = repo.get('SonarProjectKey')
+
         if clone_url:
             repository_name = clone_url.split('/')[-1][:-4]  # Extract repository name from the URL
             clone_path = os.path.join(clone_directory, repository_name)
             os.system(f'git clone {clone_url} {clone_path}')
+            createSonarPropertiesFile(clone_path, repository_name, projectKey)
+            
             print(f"Cloned repository {repository_name} to {clone_path}")
 
 # Parse command-line arguments
