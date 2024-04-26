@@ -34,7 +34,7 @@ def clone_repositories(filtered_data, clone_directory):
         clone_url = repo.get('Clone URL')
         # This replace is necessary because "/" is a invalid charactere for sonarqube keys:
         # Ex: Malformed key for Project: '4seer/openflutterecommerceapp'. Allowed characters are alphanumeric, '-', '_', '.' and ':'
-        projectKey = repo.get('SonarProjectKey').replace("/", "_")
+        projectKey = repo.get('SonarProjectKey').replace("/", ":")
 
         if clone_url:
             repository_name = clone_url.split('/')[-1][:-4]  # Extract repository name from the URL

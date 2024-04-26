@@ -9,7 +9,7 @@ load_dotenv()
 # Fetch the size of a GitHub repository from the GitHub API
 def get_repository_size(sonarProjectKey):
     token = os.getenv("GITHUB_TOKEN")
-    [owner, repo_name] = sonarProjectKey.split('/')
+    [owner, repo_name] = sonarProjectKey.split(':')
 
     api_url = f"https://api.github.com/repos/{owner}/{repo_name}"
     headers = { "Authorization": f"Bearer {token}" }

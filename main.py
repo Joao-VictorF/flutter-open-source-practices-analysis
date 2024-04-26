@@ -58,7 +58,7 @@ def fetch_repository_info(repo_url, repo_type):
             'Forks': repo_info['forks_count'],
             'Issues (Open)': repo_info['open_issues'],
             'Clone URL': repo_info['clone_url'],
-            'SonarProjectKey': repo_info['full_name'],
+            'SonarProjectKey': repo_info['full_name'].replace("/", ":"),
         }
     else:
         return None
