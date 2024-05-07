@@ -19,14 +19,25 @@ MIN_OPEN_ISSUES = int(os.getenv("MIN_OPEN_ISSUES"))
 MIN_CONTRIBUTORS = int(os.getenv("MIN_CONTRIBUTORS"))
 MAX_LAST_COMMIT_YEARS = int(os.getenv("MAX_LAST_COMMIT_YEARS"))
 
-filtered_repositories = [repo for repo in data.values() if 
-                         datetime.strptime(repo['Last Commit'], '%d/%m/%Y').year >= MAX_LAST_COMMIT_YEARS
-                         and repo['Stars'] >= MIN_STARS
-                         and repo['Watchers'] >= MIN_WATCHERS
-                         and repo['Commits'] >= MIN_COMMITS
-                         and repo['Contributors'] >= MIN_CONTRIBUTORS
-                         and repo['Forks'] >= MIN_FORKS
-                         and repo['Issues (Open)'] >= MIN_OPEN_ISSUES]
+filtered_repositories = []
+current_year = datetime.now().year
+
+for repo_data in data.values():
+    last_commit_date = datetime.strptime(repo_data['Last Commit'], '%d/%m/%Y')
+    years_since_last_commit = current_year - last_commit_date.year
+
+    is_recent_commit = years_since_last_commit <= MAX_LAST_COMMIT_YEARS
+    meets_stars_criteria = repo_data['Stars'] >= MIN_STARS
+    meets_watchers_criteria = repo_data['Watchers'] >= MIN_WATCHERS
+    meets_commits_criteria = repo_data['Commits'] >= MIN_COMMITS
+    meets_contributors_criteria = repo_data['Contributors'] >= MIN_CONTRIBUTORS
+    meets_forks_criteria = repo_data['Forks'] >= MIN_FORKS
+    has_open_issues_criteria = repo_data['Issues (Open)'] >= MIN_OPEN_ISSUES
+
+    if is_recent_commit and meets_stars_criteria and meets_watchers_criteria \
+            and meets_commits_criteria and meets_contributors_criteria \
+            and meets_forks_criteria and has_open_issues_criteria:
+        filtered_repositories.append(repo_data)
 
 # Create the filtered data structure
 filtered_data = {

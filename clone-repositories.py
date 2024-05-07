@@ -23,6 +23,7 @@ def createSonarPropertiesFile(clone_path, repository_name, sonarProjectKey):
 
     # exclude generated files
     sonar.exclusions=test/**/*_test.mocks.dart,lib/**/*.g.dart
+    sonar.dart.analyzer.options.override=false
     """
 
     with open(os.path.join(clone_path, "sonar-project.properties"), 'w') as file:
