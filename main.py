@@ -68,6 +68,7 @@ def verifySpreadsheet():
     if not os.path.exists(file_path):
         wb = openpyxl.Workbook()
         wb.save(file_path)
+
 def main():
     with open('repositories.json') as f:
         repos = json.load(f)

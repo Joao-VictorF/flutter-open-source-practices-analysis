@@ -8,6 +8,13 @@ def runSonarQube(repositories, clone_directory):
     original_directory = os.getcwd()  # Save the original working directory
 
     for repo in repositories:
+        if repo.get('SonarQubeExecuted') == True:
+            continue
+
+        if input(f"Do you want to run commands in the next project '{repo.get('Name')}'? (y/n): ").lower() != 'y':
+            print("Exiting the script.")
+            break
+
         repository_name = repo.get('Name')
         repository_path = os.path.join(clone_directory, repository_name)
 
