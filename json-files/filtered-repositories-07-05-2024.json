@@ -22,7 +22,8 @@
             "Forks": 371,
             "Issues (Open)": 29,
             "Clone URL": "https://github.com/4seer/openflutterecommerceapp.git",
-            "SonarProjectKey": "4seer/openflutterecommerceapp"
+            "SonarProjectKey": "4seer/openflutterecommerceapp",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:40:11",
@@ -36,7 +37,8 @@
             "Forks": 513,
             "Issues (Open)": 48,
             "Clone URL": "https://github.com/invoiceninja/admin-portal.git",
-            "SonarProjectKey": "invoiceninja/admin-portal"
+            "SonarProjectKey": "invoiceninja/admin-portal",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:40:18",
@@ -50,7 +52,8 @@
             "Forks": 238,
             "Issues (Open)": 8,
             "Clone URL": "https://github.com/jesusrp98/spacex-go.git",
-            "SonarProjectKey": "jesusrp98/spacex-go"
+            "SonarProjectKey": "jesusrp98/spacex-go",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:33",
@@ -64,7 +67,8 @@
             "Forks": 806,
             "Issues (Open)": 12,
             "Clone URL": "https://github.com/JideGuru/FlutterEbookApp.git",
-            "SonarProjectKey": "JideGuru/FlutterEbookApp"
+            "SonarProjectKey": "JideGuru/FlutterEbookApp",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:36",
@@ -78,7 +82,8 @@
             "Forks": 110,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/MDSADABWASIM/Toughest.git",
-            "SonarProjectKey": "MDSADABWASIM/Toughest"
+            "SonarProjectKey": "MDSADABWASIM/Toughest",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:40",
@@ -92,7 +97,8 @@
             "Forks": 39,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/deandreamatias/tv-randshow.git",
-            "SonarProjectKey": "deandreamatias/tv-randshow"
+            "SonarProjectKey": "deandreamatias/tv-randshow",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:46",
@@ -106,7 +112,8 @@
             "Forks": 52,
             "Issues (Open)": 31,
             "Clone URL": "https://github.com/Suwayomi/Tachidesk-Sorayomi.git",
-            "SonarProjectKey": "Suwayomi/Tachidesk-Sorayomi"
+            "SonarProjectKey": "Suwayomi/Tachidesk-Sorayomi",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:50:05",
@@ -120,7 +127,8 @@
             "Forks": 103,
             "Issues (Open)": 57,
             "Clone URL": "https://github.com/piggyvault/piggyvault.git",
-            "SonarProjectKey": "piggyvault/piggyvault"
+            "SonarProjectKey": "piggyvault/piggyvault",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:50:11",
@@ -134,7 +142,9 @@
             "Forks": 37,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/ReceiptManager/receipt-manager-app.git",
-            "SonarProjectKey": "ReceiptManager/receipt-manager-app"
+            "SonarProjectKey": "ReceiptManager/receipt-manager-app",
+            "SonarQubeExecuted": true,
+            "SonarQubeHasError": true
         },
         {
             "Consult Date": "03/04/2024 18:50:16",
@@ -148,7 +158,10 @@
             "Forks": 315,
             "Issues (Open)": 108,
             "Clone URL": "https://github.com/appditto/natrium_wallet_flutter.git",
-            "SonarProjectKey": "appditto/natrium_wallet_flutter"
+            "SonarProjectKey": "appditto/natrium_wallet_flutter",
+            "SonarQubeExecuted": true,
+            "SonarQubeHasError": true,
+            "Observation": "dependencias com versões minimas do dart diferentes entre si, impossível rodar o app pois uma das libs precisa ser atualizada primeiro."
         },
         {
             "Consult Date": "03/04/2024 18:50:18",
@@ -162,7 +175,10 @@
             "Forks": 22,
             "Issues (Open)": 90,
             "Clone URL": "https://github.com/JoinSEEDS/seeds_light_wallet.git",
-            "SonarProjectKey": "JoinSEEDS/seeds_light_wallet"
+            "SonarProjectKey": "JoinSEEDS/seeds_light_wallet",
+            "SonarQubeExecuted": true,
+            "SonarQubeHasError": true,
+            "Observation": "dependencias com versões minimas do dart diferentes entre si, impossível rodar o app pois uma das libs precisa ser atualizada primeiro."
         },
         {
             "Consult Date": "03/04/2024 18:50:33",

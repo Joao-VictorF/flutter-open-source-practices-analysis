@@ -70,7 +70,7 @@ def verifySpreadsheet():
         wb.save(file_path)
 
 def main():
-    with open('repositories.json') as f:
+    with open('json-files/repositories.json') as f:
         repos = json.load(f)
 
     # Load Excel workbook
@@ -115,7 +115,7 @@ def main():
             # Print progress
             print(f"Reading repository {i}/{len(repos)}: {repo_info['Name']}")
 
-    with open('repositories.json', 'w') as json_file:
+    with open('json-files/repositories.json', 'w') as json_file:
         json.dump(repos, json_file, indent=2)
     
     headers = [
@@ -134,7 +134,7 @@ def main():
     ]
     print(tabulate(table_data, headers=headers, tablefmt="grid", stralign="left"))
 
-    with open('repositories_data.json', 'r') as f:
+    with open('json-files/repositories_data.json', 'r') as f:
         existing_data = json.load(f)
 
     json_data = []
@@ -144,7 +144,7 @@ def main():
     for item in json_data:
         existing_data[item['SonarProjectKey']] = item
 
-    with open('repositories_data.json', 'w') as f:
+    with open('json-files/repositories_data.json', 'w') as f:
      json.dump(existing_data, f, indent=2)
 
 

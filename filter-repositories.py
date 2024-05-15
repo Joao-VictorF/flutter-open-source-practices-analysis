@@ -7,7 +7,7 @@ from tabulate import tabulate
 load_dotenv() 
 
 # Load the JSON data from the file
-with open('repositories_data.json', 'r') as file:
+with open('json-files/repositories_data.json', 'r') as file:
     data = json.load(file)
 
 # Define the environment variables for filtering
@@ -55,7 +55,7 @@ filtered_data = {
 }
 
 current_date = datetime.now().strftime('%d-%m-%Y')
-output_filename = f'filtered-repositories-{current_date}.json'
+output_filename = f'json-files/filtered-repositories-{current_date}.json'
 
 # Save the filtered data to a new JSON file
 with open(output_filename, 'w') as outfile:

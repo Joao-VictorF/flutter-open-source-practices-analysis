@@ -52,9 +52,9 @@ args = parser.parse_args()
 
 # Load the filtered repositories JSON file
 date_argument = args.date if args.date else datetime.now().strftime('%d-%m-%Y')
-file_name = f'filtered-repositories-{date_argument}.json'
+file_path = f'json-files/filtered-repositories-{date_argument}.json'
 
-with open(file_name, 'r') as file:
+with open(file_path, 'r') as file:
     filtered_data = json.load(file)
 
 # Specify the directory where you want to clone the repositories
