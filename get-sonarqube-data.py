@@ -25,6 +25,15 @@ def fetch_source_lines(component_key, initial_line=1, batch_size=500, source_cod
     else:
         return None
 
+# Extract simplified sources schema with Array of "code" attributes
+def simplify_sources_schema(project_data):
+    for project_key, data in project_data.items():
+        sources = data.get("sources", {})
+        for component, code_lines in sources.items():
+            simplified_code = [line.get("code", "") for line in code_lines]
+            project_data[project_key]["sources"][component] = simplified_code
+    return project_data
+
 # Function to fetch issues data for a project key
 def fetch_project_issues(sonar, project_key):
     page = 1
@@ -95,6 +104,9 @@ def fetch_and_process_for_project(mocked_repositories, sonar):
         # Fetch and process data sequentially for the selected project
         project_data = fetch_and_process_data(sonar, sonarProjectKey)
         fetched_issues_data[sonarProjectKey] = project_data
+    
+    # Simplify the sources schema before saving to JSON
+    fetched_issues_data = simplify_sources_schema(fetched_issues_data)
 
     return fetched_issues_data
 
@@ -119,7 +131,7 @@ mocked_repositories = [repositories[0]]
 fetched_data = fetch_and_process_for_project(mocked_repositories, sonar)
 
 # Save the fetched data to a JSON file
-output_file = 'fetched_issues_data.json'
+output_file = 'json-files/fetched_issues_data.json'
 with open(output_file, 'w') as json_file:
     json.dump(fetched_data, json_file, indent=4)
 
