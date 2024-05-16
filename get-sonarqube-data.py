@@ -6,6 +6,7 @@ from sonarqube import SonarQubeClient
 import requests
 import urllib.parse
 
+FETCH_SOURCE_LINES = False
 # Function to fetch the source lines for a component with pagination using recursion
 def fetch_source_lines(component_key, initial_line=1, batch_size=500, source_code=[]):
     encoded_component_key = urllib.parse.quote(component_key, safe='')
@@ -48,9 +49,10 @@ def fetch_project_issues(sonar, project_key):
     while has_more_issues:
         issues = sonar.issues.search_issues(
             componentKeys=key, 
-            type="CODE_SMELL",
+            types="CODE_SMELL",
             ps="100",
-            p=str(page)
+            p=str(page),
+            resolved="false"
         )
 
         project_issues = issues.get('issues', [])
@@ -86,10 +88,11 @@ def fetch_and_process_data(sonar, project_key):
     }
 
     # Fetch source lines for each component in the project
-    for component in project_data["components"]:
-        source_lines = fetch_source_lines(component)
-        if source_lines:
-            project_data["sources"][component] = source_lines
+    if FETCH_SOURCE_LINES:
+        for component in project_data["components"]:
+            source_lines = fetch_source_lines(component)
+            if source_lines:
+                project_data["sources"][component] = source_lines
 
     return project_data
 
@@ -116,7 +119,7 @@ parser.add_argument('--date', type=str, help='Specify the date to replace in the
 args = parser.parse_args()
 
 date_argument = args.date if args.date else datetime.now().strftime('%d-%m-%Y')
-file_name = f'filtered-repositories-{date_argument}.json'
+file_name = f'json-files/filtered-repositories-{date_argument}.json'
 
 # Initialize SonarQube client and fetch/process data for a single project
 sonar = SonarQubeClient(sonarqube_url="http://localhost:9000", token='005262c36323025d91963a83b684499a0f841808')
