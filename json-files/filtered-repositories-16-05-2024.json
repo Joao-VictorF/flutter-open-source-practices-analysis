@@ -22,7 +22,11 @@
             "Forks": 15,
             "Issues (Open)": 10,
             "Clone URL": "https://github.com/comerc/minsk8.git",
-            "SonarProjectKey": "comerc/minsk8"
+            "SonarProjectKey": "comerc/minsk8",
+            "SonarQubeRetry": true,
+            "SonarQubeExecuted": true,
+            "SonarQubeHasError": true,
+            "Observation": "Dependencias com versões minimas do dart diferentes entre si, impossível rodar o app pois uma das libs precisa ser atualizada primeiro."
         },
         {
             "Consult Date": "03/04/2024 18:40:08",
@@ -36,7 +40,8 @@
             "Forks": 371,
             "Issues (Open)": 29,
             "Clone URL": "https://github.com/4seer/openflutterecommerceapp.git",
-            "SonarProjectKey": "4seer/openflutterecommerceapp"
+            "SonarProjectKey": "4seer/openflutterecommerceapp",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:40:11",
@@ -50,7 +55,8 @@
             "Forks": 513,
             "Issues (Open)": 48,
             "Clone URL": "https://github.com/invoiceninja/admin-portal.git",
-            "SonarProjectKey": "invoiceninja/admin-portal"
+            "SonarProjectKey": "invoiceninja/admin-portal",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:40:18",
@@ -64,7 +70,8 @@
             "Forks": 238,
             "Issues (Open)": 8,
             "Clone URL": "https://github.com/jesusrp98/spacex-go.git",
-            "SonarProjectKey": "jesusrp98/spacex-go"
+            "SonarProjectKey": "jesusrp98/spacex-go",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:27",
@@ -78,7 +85,8 @@
             "Forks": 29,
             "Issues (Open)": 5,
             "Clone URL": "https://github.com/j-j-gajjar/Mathematics.git",
-            "SonarProjectKey": "j-j-gajjar/Mathematics"
+            "SonarProjectKey": "j-j-gajjar/Mathematics",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:33",
@@ -92,7 +100,8 @@
             "Forks": 806,
             "Issues (Open)": 12,
             "Clone URL": "https://github.com/JideGuru/FlutterEbookApp.git",
-            "SonarProjectKey": "JideGuru/FlutterEbookApp"
+            "SonarProjectKey": "JideGuru/FlutterEbookApp",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:36",
@@ -106,7 +115,8 @@
             "Forks": 110,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/MDSADABWASIM/Toughest.git",
-            "SonarProjectKey": "MDSADABWASIM/Toughest"
+            "SonarProjectKey": "MDSADABWASIM/Toughest",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:40",
@@ -120,7 +130,8 @@
             "Forks": 39,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/deandreamatias/tv-randshow.git",
-            "SonarProjectKey": "deandreamatias/tv-randshow"
+            "SonarProjectKey": "deandreamatias/tv-randshow",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:49:42",
@@ -134,7 +145,11 @@
             "Forks": 13,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/ArizArmeidi/AnimSearch.git",
-            "SonarProjectKey": "ArizArmeidi/AnimSearch"
+            "SonarProjectKey": "ArizArmeidi/AnimSearch",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.0.0",
+            "Observation": "Inicialmente tive erros, mas foi um fix simples, remover 2 props que não existem mais em um widget."
+        
         },
         {
             "Consult Date": "03/04/2024 18:49:46",
@@ -148,7 +163,8 @@
             "Forks": 52,
             "Issues (Open)": 31,
             "Clone URL": "https://github.com/Suwayomi/Tachidesk-Sorayomi.git",
-            "SonarProjectKey": "Suwayomi/Tachidesk-Sorayomi"
+            "SonarProjectKey": "Suwayomi/Tachidesk-Sorayomi",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:50:05",
@@ -162,7 +178,8 @@
             "Forks": 103,
             "Issues (Open)": 57,
             "Clone URL": "https://github.com/piggyvault/piggyvault.git",
-            "SonarProjectKey": "piggyvault/piggyvault"
+            "SonarProjectKey": "piggyvault/piggyvault",
+            "SonarQubeExecuted": true
         },
         {
             "Consult Date": "03/04/2024 18:50:11",
@@ -176,7 +193,10 @@
             "Forks": 37,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/ReceiptManager/receipt-manager-app.git",
-            "SonarProjectKey": "ReceiptManager/receipt-manager-app"
+            "SonarProjectKey": "ReceiptManager/receipt-manager-app",
+            "SonarQubeExecuted": true,
+            "SonarQubeRetry": true,
+            "Flutter": "2.8.0"
         },
         {
             "Consult Date": "03/04/2024 18:50:16",
@@ -190,7 +210,11 @@
             "Forks": 315,
             "Issues (Open)": 108,
             "Clone URL": "https://github.com/appditto/natrium_wallet_flutter.git",
-            "SonarProjectKey": "appditto/natrium_wallet_flutter"
+            "SonarProjectKey": "appditto/natrium_wallet_flutter",
+            "SonarQubeRetry": true,
+            "SonarQubeExecuted": true,
+            "SonarQubeHasError": true,
+            "Observation": "Dependencias com versões minimas do dart diferentes entre si. Muitas libs vindas do github sem null-safety."
         },
         {
             "Consult Date": "03/04/2024 18:50:18",
@@ -204,7 +228,11 @@
             "Forks": 22,
             "Issues (Open)": 90,
             "Clone URL": "https://github.com/JoinSEEDS/seeds_light_wallet.git",
-            "SonarProjectKey": "JoinSEEDS/seeds_light_wallet"
+            "SonarProjectKey": "JoinSEEDS/seeds_light_wallet",
+            "SonarQubeRetry": true,
+            "SonarQubeExecuted": true,
+            "Flutter": "3.10.0",
+            "Observation": "atualizar o i18n p 0.18.0"
         },
         {
             "Consult Date": "03/04/2024 18:50:31",
@@ -218,7 +246,9 @@
             "Forks": 11,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/adityanjr/covid19-tracker.git",
-            "SonarProjectKey": "adityanjr/covid19-tracker"
+            "SonarProjectKey": "adityanjr/covid19-tracker",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.0.0"
         },
         {
             "Consult Date": "03/04/2024 18:50:33",
@@ -232,7 +262,9 @@
             "Forks": 3,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/EnjoyingFOSS/feeel.git",
-            "SonarProjectKey": "EnjoyingFOSS/feeel"
+            "SonarProjectKey": "EnjoyingFOSS/feeel",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.0"
         },
         {
             "Consult Date": "03/04/2024 18:50:35",
@@ -246,7 +278,9 @@
             "Forks": 247,
             "Issues (Open)": 456,
             "Clone URL": "https://github.com/openfoodfacts/smooth-app.git",
-            "SonarProjectKey": "openfoodfacts/smooth-app"
+            "SonarProjectKey": "openfoodfacts/smooth-app",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.5"
         },
         {
             "Consult Date": "03/04/2024 18:50:40",
@@ -260,7 +294,9 @@
             "Forks": 214,
             "Issues (Open)": 77,
             "Clone URL": "https://github.com/wger-project/flutter.git",
-            "SonarProjectKey": "wger-project/flutter"
+            "SonarProjectKey": "wger-project/flutter",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.5"
         },
         {
             "Consult Date": "03/04/2024 19:07:50",
@@ -274,7 +310,9 @@
             "Forks": 551,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/hungps/flutter_pokedex.git",
-            "SonarProjectKey": "hungps/flutter_pokedex"
+            "SonarProjectKey": "hungps/flutter_pokedex",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.5"
         },
         {
             "Consult Date": "03/04/2024 19:10:01",
@@ -288,7 +326,9 @@
             "Forks": 59,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/RedBrogdon/flutterflip.git",
-            "SonarProjectKey": "RedBrogdon/flutterflip"
+            "SonarProjectKey": "RedBrogdon/flutterflip",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.5"
         },
         {
             "Consult Date": "03/04/2024 19:10:09",
@@ -302,7 +342,9 @@
             "Forks": 80,
             "Issues (Open)": 2,
             "Clone URL": "https://github.com/kevmoo/slide_puzzle.git",
-            "SonarProjectKey": "kevmoo/slide_puzzle"
+            "SonarProjectKey": "kevmoo/slide_puzzle",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.5"
         },
         {
             "Consult Date": "03/04/2024 19:10:12",
@@ -316,7 +358,9 @@
             "Forks": 82,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/jaysavsani07/math-metrix.git",
-            "SonarProjectKey": "jaysavsani07/math-metrix"
+            "SonarProjectKey": "jaysavsani07/math-metrix",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.5"
         },
         {
             "Consult Date": "03/04/2024 19:10:36",
@@ -330,7 +374,9 @@
             "Forks": 46,
             "Issues (Open)": 2,
             "Clone URL": "https://github.com/moda20/flutter-tunein.git",
-            "SonarProjectKey": "moda20/flutter-tunein"
+            "SonarProjectKey": "moda20/flutter-tunein",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.3.8"
         },
         {
             "Consult Date": "03/04/2024 19:10:37",
@@ -344,7 +390,9 @@
             "Forks": 21,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/o-ifeanyi/musicPlayer.git",
-            "SonarProjectKey": "o-ifeanyi/musicPlayer"
+            "SonarProjectKey": "o-ifeanyi/musicPlayer",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.3.8"
         },
         {
             "Consult Date": "03/04/2024 19:10:41",
@@ -358,7 +406,9 @@
             "Forks": 67,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/vellt/Movies-App-Flutter.git",
-            "SonarProjectKey": "vellt/Movies-App-Flutter"
+            "SonarProjectKey": "vellt/Movies-App-Flutter",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.3.8"
         },
         {
             "Consult Date": "03/04/2024 19:13:42",
@@ -372,7 +422,9 @@
             "Forks": 43,
             "Issues (Open)": 2,
             "Clone URL": "https://github.com/j-j-gajjar/FLUTTER_NewsApp.git",
-            "SonarProjectKey": "j-j-gajjar/FLUTTER_NewsApp"
+            "SonarProjectKey": "j-j-gajjar/FLUTTER_NewsApp",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.3.8"
         },
         {
             "Consult Date": "03/04/2024 19:13:51",
@@ -386,7 +438,11 @@
             "Forks": 38,
             "Issues (Open)": 17,
             "Clone URL": "https://github.com/juniorise/spooky-mb.git",
-            "SonarProjectKey": "juniorise/spooky-mb"
+            "SonarProjectKey": "juniorise/spooky-mb",
+            "SonarQubeExecuted": true,
+            "SonarQubeRetry": true,
+            "Flutter": "3.16.0",
+            "Observation": "dependencias com versões minimas do dart diferentes entre si, impossível rodar o app pois uma das libs precisa ser atualizada primeiro."
         },
         {
             "Consult Date": "03/04/2024 19:13:53",
@@ -400,7 +456,11 @@
             "Forks": 118,
             "Issues (Open)": 2,
             "Clone URL": "https://github.com/jogboms/tailor_made.git",
-            "SonarProjectKey": "jogboms/tailor_made"
+            "SonarProjectKey": "jogboms/tailor_made",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.10.1",
+            "SonarQubeRetry": true,
+            "Observation": "Rodar: flutter packages pub run build_runner build --delete-conflicting-outputs"
         },
         {
             "Consult Date": "03/04/2024 19:15:23",
@@ -414,7 +474,9 @@
             "Forks": 14,
             "Issues (Open)": 2,
             "Clone URL": "https://github.com/tsvillain/Wallbay.git",
-            "SonarProjectKey": "tsvillain/Wallbay"
+            "SonarProjectKey": "tsvillain/Wallbay",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.7.12"
         },
         {
             "Consult Date": "03/04/2024 19:17:02",
@@ -428,7 +490,9 @@
             "Forks": 11,
             "Issues (Open)": 16,
             "Clone URL": "https://github.com/Spyy004/LifeList.git",
-            "SonarProjectKey": "Spyy004/LifeList"
+            "SonarProjectKey": "Spyy004/LifeList",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.7.12"
         },
         {
             "Consult Date": "03/04/2024 19:17:08",
@@ -442,7 +506,9 @@
             "Forks": 2527,
             "Issues (Open)": 5,
             "Clone URL": "https://github.com/CarGuo/gsy_github_app_flutter.git",
-            "SonarProjectKey": "CarGuo/gsy_github_app_flutter"
+            "SonarProjectKey": "CarGuo/gsy_github_app_flutter",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.0"
         },
         {
             "Consult Date": "03/04/2024 19:17:15",
@@ -456,7 +522,9 @@
             "Forks": 144,
             "Issues (Open)": 40,
             "Clone URL": "https://github.com/hamaluik/timecop.git",
-            "SonarProjectKey": "hamaluik/timecop"
+            "SonarProjectKey": "hamaluik/timecop",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.0"
         },
         {
             "Consult Date": "03/04/2024 19:17:21",
@@ -470,7 +538,9 @@
             "Forks": 268,
             "Issues (Open)": 10,
             "Clone URL": "https://github.com/burhanrashid52/WhatTodo.git",
-            "SonarProjectKey": "burhanrashid52/WhatTodo"
+            "SonarProjectKey": "burhanrashid52/WhatTodo",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.0"
         },
         {
             "Consult Date": "03/04/2024 19:17:26",
@@ -484,7 +554,11 @@
             "Forks": 23,
             "Issues (Open)": 32,
             "Clone URL": "https://github.com/proninyaroslav/libretrack.git",
-            "SonarProjectKey": "proninyaroslav/libretrack"
+            "SonarProjectKey": "proninyaroslav/libretrack",
+            "SonarQubeExecuted": true,
+            "SonarQubeRetry": true,
+            "Flutter": "3.7.10",
+            "Observation": "Fixes menores"
         },
         {
             "Consult Date": "03/04/2024 19:17:33",
@@ -498,7 +572,9 @@
             "Forks": 41,
             "Issues (Open)": 31,
             "Clone URL": "https://github.com/mateusz-bak/openreads.git",
-            "SonarProjectKey": "mateusz-bak/openreads"
+            "SonarProjectKey": "mateusz-bak/openreads",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.22.0"
         },
         {
             "Consult Date": "03/04/2024 19:17:38",
@@ -512,7 +588,11 @@
             "Forks": 625,
             "Issues (Open)": 8,
             "Clone URL": "https://github.com/mdanics/fluttergram.git",
-            "SonarProjectKey": "mdanics/fluttergram"
+            "SonarProjectKey": "mdanics/fluttergram",
+            "SonarQubeExecuted": true,
+            "SonarQubeRetry": true,
+            "Flutter": "3.7.10",
+            "Observation": "substituir geocoder por geocode e outros ajustes"
         },
         {
             "Consult Date": "03/04/2024 19:17:49",
@@ -526,7 +606,9 @@
             "Forks": 1038,
             "Issues (Open)": 33,
             "Clone URL": "https://github.com/TheAlphamerc/flutter_twitter_clone.git",
-            "SonarProjectKey": "TheAlphamerc/flutter_twitter_clone"
+            "SonarProjectKey": "TheAlphamerc/flutter_twitter_clone",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.7.10"
         },
         {
             "Consult Date": "03/04/2024 19:17:53",
@@ -540,7 +622,11 @@
             "Forks": 197,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/robertodoering/harpy.git",
-            "SonarProjectKey": "robertodoering/harpy"
+            "SonarProjectKey": "robertodoering/harpy",
+            "SonarQubeExecuted": true,
+            "SonarQubeHasError": true,
+            "SonarQubeRetry": true,
+            "Observation": "Usa uma biblioteca que não está mais disponivel. Muitos casos de uso, impossivel substituir."
         },
         {
             "Consult Date": "03/04/2024 19:17:55",
@@ -554,7 +640,11 @@
             "Forks": 16,
             "Issues (Open)": 121,
             "Clone URL": "https://github.com/Big-Fig/Fediverse.app.git",
-            "SonarProjectKey": "Big-Fig/Fediverse.app"
+            "SonarProjectKey": "Big-Fig/Fediverse.app",
+            "SonarQubeExecuted": true,
+            "SonarQubeHasError": true,
+            "SonarQubeRetry": true,
+            "Observation": "dependencias com versões minimas do dart diferentes entre si, impossível rodar o app pois uma das libs precisa ser atualizada primeiro."
         },
         {
             "Consult Date": "03/04/2024 19:18:03",
@@ -568,7 +658,9 @@
             "Forks": 496,
             "Issues (Open)": 1,
             "Clone URL": "https://github.com/Widle-Studio/Grocery-App.git",
-            "SonarProjectKey": "Widle-Studio/Grocery-App"
+            "SonarProjectKey": "Widle-Studio/Grocery-App",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.13.9"
         },
         {
             "Consult Date": "03/04/2024 19:18:11",
@@ -582,7 +674,9 @@
             "Forks": 25,
             "Issues (Open)": 8,
             "Clone URL": "https://github.com/LaCoro/ConsumerFlutterApp.git",
-            "SonarProjectKey": "LaCoro/ConsumerFlutterApp"
+            "SonarProjectKey": "LaCoro/ConsumerFlutterApp",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.4"
         },
         {
             "Consult Date": "03/04/2024 19:18:13",
@@ -596,7 +690,9 @@
             "Forks": 218,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/woosignal/flutter-woocommerce-app.git",
-            "SonarProjectKey": "woosignal/flutter-woocommerce-app"
+            "SonarProjectKey": "woosignal/flutter-woocommerce-app",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.22.1"
         },
         {
             "Consult Date": "03/04/2024 19:18:23",
@@ -610,7 +706,11 @@
             "Forks": 554,
             "Issues (Open)": 224,
             "Clone URL": "https://github.com/memspace/zefyr.git",
-            "SonarProjectKey": "memspace/zefyr"
+            "SonarProjectKey": "memspace/zefyr",
+            "SonarQubeExecuted": true,
+            "SonarQubeHasError": true,
+            "SonarQubeRetry": true,
+            "Observation": "Projeto com muitos erros. Aparentemente o app foi abandonado."
         },
         {
             "Consult Date": "03/04/2024 19:18:29",
@@ -624,7 +724,9 @@
             "Forks": 131,
             "Issues (Open)": 10,
             "Clone URL": "https://github.com/pichillilorenzo/flutter_browser_app.git",
-            "SonarProjectKey": "pichillilorenzo/flutter_browser_app"
+            "SonarProjectKey": "pichillilorenzo/flutter_browser_app",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.16.0"
         },
         {
             "Consult Date": "03/04/2024 19:18:35",
@@ -638,7 +740,9 @@
             "Forks": 89,
             "Issues (Open)": 0,
             "Clone URL": "https://github.com/ArizArmeidi/FlutterWeather.git",
-            "SonarProjectKey": "ArizArmeidi/FlutterWeather"
+            "SonarProjectKey": "ArizArmeidi/FlutterWeather",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.16.0"
         },
         {
             "Consult Date": "03/04/2024 19:18:36",
@@ -652,7 +756,9 @@
             "Forks": 58,
             "Issues (Open)": 43,
             "Clone URL": "https://github.com/KyleKun/one_second_diary.git",
-            "SonarProjectKey": "KyleKun/one_second_diary"
+            "SonarProjectKey": "KyleKun/one_second_diary",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.16.0"
         },
         {
             "Consult Date": "03/04/2024 19:18:38",
@@ -666,7 +772,10 @@
             "Forks": 27,
             "Issues (Open)": 11,
             "Clone URL": "https://github.com/proninyaroslav/blink-comparison.git",
-            "SonarProjectKey": "proninyaroslav/blink-comparison"
+            "SonarProjectKey": "proninyaroslav/blink-comparison",
+            "SonarQubeExecuted": true,
+            "Flutter": "2.10.0",
+            "Observation": "Copiar exclude options do analyzer"
         },
         {
             "Consult Date": "03/04/2024 19:18:40",
@@ -680,7 +789,10 @@
             "Forks": 98,
             "Issues (Open)": 12,
             "Clone URL": "https://github.com/simonbengtsson/airdash.git",
-            "SonarProjectKey": "simonbengtsson/airdash"
+            "SonarProjectKey": "simonbengtsson/airdash",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.19.0",
+            "Observation": "Criar .env's"
         },
         {
             "Consult Date": "03/04/2024 19:18:48",
@@ -694,7 +806,9 @@
             "Forks": 1323,
             "Issues (Open)": 418,
             "Clone URL": "https://github.com/immich-app/immich.git",
-            "SonarProjectKey": "immich-app/immich"
+            "SonarProjectKey": "immich-app/immich",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.22.1"
         },
         {
             "Consult Date": "03/04/2024 19:19:01",
@@ -708,7 +822,9 @@
             "Forks": 31,
             "Issues (Open)": 14,
             "Clone URL": "https://github.com/devclub-iitd/ShareACab.git",
-            "SonarProjectKey": "devclub-iitd/ShareACab"
+            "SonarProjectKey": "devclub-iitd/ShareACab",
+            "SonarQubeExecuted": true,
+            "Flutter": "3.7.12"
         }
     ]
 }
