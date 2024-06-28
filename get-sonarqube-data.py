@@ -6,11 +6,12 @@ from sonarqube import SonarQubeClient
 import requests
 import urllib.parse
 
+SONARQUBE_HOST = 'http://host.docker.internal:9000'
 FETCH_SOURCE_LINES = False
 # Function to fetch the source lines for a component with pagination using recursion
 def fetch_source_lines(component_key, initial_line=1, batch_size=500, source_code=[]):
     encoded_component_key = urllib.parse.quote(component_key, safe='')
-    url = f"http://localhost:9000/api/sources/lines?from={initial_line}&to={initial_line + batch_size - 1}&key={encoded_component_key}"
+    url = f"{SONARQUBE_HOST}/api/sources/lines?from={initial_line}&to={initial_line + batch_size - 1}&key={encoded_component_key}"
     headers = { "Authorization": "Basic MDA1MjYyYzM2MzIzMDI1ZDkxOTYzYTgzYjY4NDQ5OWEwZjg0MTgwODo=" }
     response = requests.get(url, headers=headers)
     
@@ -84,7 +85,7 @@ def fetch_and_process_data(sonar, project_key):
     project_data = {
         "issues": issues_data,
         "components": unique_components_list,
-        "sources": {}  # Placeholder for source data
+        # "sources": {}  # Placeholder for source data
     }
 
     # Fetch source lines for each component in the project
@@ -122,16 +123,16 @@ date_argument = args.date if args.date else datetime.now().strftime('%d-%m-%Y')
 file_name = f'json-files/filtered-repositories-{date_argument}.json'
 
 # Initialize SonarQube client and fetch/process data for a single project
-sonar = SonarQubeClient(sonarqube_url="http://localhost:9000", token='005262c36323025d91963a83b684499a0f841808')
+sonar = SonarQubeClient(sonarqube_url=SONARQUBE_HOST, token='005262c36323025d91963a83b684499a0f841808')
 with open(file_name, 'r') as file:
     filtered_data = json.load(file)
     repositories = filtered_data.get('repositories')
 
 # Mocked list with a single project for testing
-mocked_repositories = [repositories[0]]
+# mocked_repositories = [repositories[0]]
 
 # Fetch and process data for the mocked project
-fetched_data = fetch_and_process_for_project(mocked_repositories, sonar)
+fetched_data = fetch_and_process_for_project(repositories, sonar)
 
 # Save the fetched data to a JSON file
 output_file = 'json-files/fetched_issues_data.json'
