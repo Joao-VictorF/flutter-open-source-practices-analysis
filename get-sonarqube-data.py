@@ -7,34 +7,6 @@ import requests
 import urllib.parse
 
 SONARQUBE_HOST = 'http://host.docker.internal:9000'
-FETCH_SOURCE_LINES = False
-# Function to fetch the source lines for a component with pagination using recursion
-def fetch_source_lines(component_key, initial_line=1, batch_size=500, source_code=[]):
-    encoded_component_key = urllib.parse.quote(component_key, safe='')
-    url = f"{SONARQUBE_HOST}/api/sources/lines?from={initial_line}&to={initial_line + batch_size - 1}&key={encoded_component_key}"
-    headers = { "Authorization": "Basic MDA1MjYyYzM2MzIzMDI1ZDkxOTYzYTgzYjY4NDQ5OWEwZjg0MTgwODo=" }
-    response = requests.get(url, headers=headers)
-    
-    if response.status_code == 200:
-        data = response.json()
-        current_source_lines = data.get('sources', [])
-        
-        if current_source_lines: 
-            source_code.extend(current_source_lines)
-            return fetch_source_lines(component_key, initial_line + batch_size, batch_size, source_code)
-        else:
-            return source_code
-    else:
-        return None
-
-# Extract simplified sources schema with Array of "code" attributes
-def simplify_sources_schema(project_data):
-    for project_key, data in project_data.items():
-        sources = data.get("sources", {})
-        for component, code_lines in sources.items():
-            simplified_code = [line.get("code", "") for line in code_lines]
-            project_data[project_key]["sources"][component] = simplified_code
-    return project_data
 
 # Function to fetch issues data for a project key
 def fetch_project_issues(sonar, project_key):
@@ -85,23 +57,15 @@ def fetch_and_process_data(sonar, project_key):
     project_data = {
         "issues": issues_data,
         "components": unique_components_list,
-        # "sources": {}  # Placeholder for source data
     }
-
-    # Fetch source lines for each component in the project
-    if FETCH_SOURCE_LINES:
-        for component in project_data["components"]:
-            source_lines = fetch_source_lines(component)
-            if source_lines:
-                project_data["sources"][component] = source_lines
 
     return project_data
 
 # Main function to fetch and process data for a single project
-def fetch_and_process_for_project(mocked_repositories, sonar):
+def fetch_and_process_for_project(repositories, sonar):
     fetched_issues_data = {}
 
-    for repo in mocked_repositories:
+    for repo in repositories:
         sonarProjectKey = repo.get('SonarProjectKey')
         print(f"Processing data for project key: {sonarProjectKey}")
 
@@ -109,9 +73,6 @@ def fetch_and_process_for_project(mocked_repositories, sonar):
         project_data = fetch_and_process_data(sonar, sonarProjectKey)
         fetched_issues_data[sonarProjectKey] = project_data
     
-    # Simplify the sources schema before saving to JSON
-    fetched_issues_data = simplify_sources_schema(fetched_issues_data)
-
     return fetched_issues_data
 
 # Parse command-line arguments
@@ -128,11 +89,8 @@ with open(file_name, 'r') as file:
     filtered_data = json.load(file)
     repositories = filtered_data.get('repositories')
 
-# Mocked list with a single project for testing
-# mocked_repositories = [repositories[0]]
-
 # Fetch and process data for the mocked project
-fetched_data = fetch_and_process_for_project(repositories, sonar)
+fetched_data = fetch_and_process_for_project([repositories[9]], sonar)
 
 # Save the fetched data to a JSON file
 output_file = 'json-files/fetched_issues_data.json'
