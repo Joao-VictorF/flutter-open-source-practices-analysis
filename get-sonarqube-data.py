@@ -80,6 +80,11 @@ def fetch_and_process_for_project(repositories, sonar):
     fetched_issues_data = {}
 
     for repo in repositories:
+        # Check if the project has an error on SonarQube
+        if repo.get('SonarQubeHasError'):
+            print(f"Skipping project {repo.get('SonarProjectKey')} due to SonarQubeHasError")
+            continue
+        
         sonarProjectKey = repo.get('SonarProjectKey')
         print(f"Processing data for project key: {sonarProjectKey}")
 
