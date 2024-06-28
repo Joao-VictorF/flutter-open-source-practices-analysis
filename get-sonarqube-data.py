@@ -16,7 +16,6 @@ def fetch_project_issues(sonar, project_key):
     total_issues = 0  # Initialize total_issues with a default value
     has_more_issues = True
 
-
     print(f"Fetching issues for project key: {key}")
 
     while has_more_issues:
@@ -44,19 +43,34 @@ def fetch_project_issues(sonar, project_key):
 
     return issues_data, total_issues
 
+# Function to fetch general metrics for a project
+def fetch_project_metrics(sonar, project_key):
+    metrics = 'ncloc,complexity,code_smells,duplicated_lines_density,sqale_index,sqale_debt_ratio,comment_lines_density,reliability_rating,bugs,reliability_remediation_effort,security_rating,vulnerabilities,security_remediation_effort,security_hotspots,files,directories'
+    key = project_key.replace('/', ':')
+    component = sonar.measures.get_component_with_specified_measures(
+        component=key,
+        fields="metrics,periods",
+        metricKeys=metrics
+    )
+    return component
+
 # Function to fetch and process data in the desired order for a project
 def fetch_and_process_data(sonar, project_key):
     # Fetch issues for the project
     issues_data, _ = fetch_project_issues(sonar, project_key)
 
+    # Fetch metrics for the project
+    metrics_data = fetch_project_metrics(sonar, project_key)
+
     # Process issues to extract unique components
     unique_components = set(issue.get("component") for issue in issues_data if issue.get("component"))
     unique_components_list = list(unique_components)
 
-    # Initialize the project dictionary with issues and components
+    # Initialize the project dictionary with issues, components, and metrics
     project_data = {
         "issues": issues_data,
         "components": unique_components_list,
+        "metrics": metrics_data
     }
 
     return project_data
@@ -90,10 +104,10 @@ with open(file_name, 'r') as file:
     repositories = filtered_data.get('repositories')
 
 # Fetch and process data for the mocked project
-fetched_data = fetch_and_process_for_project([repositories[9]], sonar)
+fetched_data = fetch_and_process_for_project(repositories, sonar)
 
 # Save the fetched data to a JSON file
-output_file = 'json-files/fetched_issues_data.json'
+output_file = f'json-files/fetched_issues_data-{date_argument}.json'
 with open(output_file, 'w') as json_file:
     json.dump(fetched_data, json_file, indent=4)
 
