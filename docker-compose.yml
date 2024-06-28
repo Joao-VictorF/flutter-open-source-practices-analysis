@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  flutter-open-source-analysis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./json-files:/app/json-files
