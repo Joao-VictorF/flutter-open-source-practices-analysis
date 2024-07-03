@@ -42,9 +42,11 @@ def analyze_component_distribution(df):
     return component_distribution
 
 def analyze_rule_distribution(df):
-    df['Rule'] = df['Rule'].apply(lambda x: x.replace('dartanalyzer:', ''))
     rule_counts = df['Rule'].value_counts()
-    return rule_counts
+    total_issues = rule_counts.sum()
+    cumulative_percentage = rule_counts.cumsum() / total_issues
+    top_rules = rule_counts[cumulative_percentage <= 0.70]
+    return top_rules
 
 def analyze_code_lines(df, data):
     lines_of_code = []
@@ -112,16 +114,18 @@ def create_component_distribution_chart(component_distribution, save_path):
     plt.savefig(os.path.join(save_path, 'component_distribution.png'))
     plt.close()
 
+def create_rule_distribution_chart(rule_distribution, save_path):
+    plt.figure(figsize=(10, 8))  # Aumenta a altura da figura para caber todos os nomes das regras
+    ax = rule_distribution.plot(kind='barh', color='skyblue', ax=plt.gca())
+    plt.title('Top Rules Comprising 70% of Issues')
+    plt.xlabel('Issue Count')
+    plt.ylabel('Rule')
+    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
-def create_rule_distribution_chart(rule_counts, save_path):
-    plt.figure(figsize=(10, 6))
-    rule_counts.plot(kind='bar', color='skyblue')
-    plt.title('Frequency of Issue Rules')
-    plt.xlabel('Rule')
-    plt.ylabel('Count')
-    plt.xticks(rotation=90)
-    for i, count in enumerate(rule_counts):
-        plt.text(i, count, f"{rule_counts.index[i]}\n{count}", ha='center', va='bottom', rotation=0, fontsize=8)
+    # Adiciona os valores nas barras
+    for index, value in enumerate(rule_distribution):
+        ax.text(value, index, f"{value}", va='center', ha='right')
+    
     plt.savefig(os.path.join(save_path, 'rule_distribution.png'))
     plt.close()
 
