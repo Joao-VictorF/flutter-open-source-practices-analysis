@@ -7,3 +7,4 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./json-files:/app/json-files
+      - ./analysis_results:/app/analysis_results
