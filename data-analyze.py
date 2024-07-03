@@ -31,8 +31,20 @@ def analyze_effort_debt(df):
     effort_debt_analysis = df.groupby('Severity')[['Effort', 'Debt']].sum()
     return effort_debt_analysis
 
+def extract_project_and_filename(component):
+    # Divide o componente pelo separador ':' e considera apenas a última parte (o nome do arquivo)
+    # e a primeira parte antes do ':', que é o nome do projeto
+    parts = component.split(':')
+    if len(parts) > 1:
+        project_name = parts[0]
+        filename = parts[-1].split('/')[-1]
+        return f"{project_name}/{filename}"
+    else:
+        return component
+
 def analyze_component_distribution(df):
-    component_distribution = df['Component'].value_counts()
+    df['Simplified Component'] = df['Component'].apply(extract_project_and_filename)
+    component_distribution = df['Simplified Component'].value_counts()
     return component_distribution
 
 def analyze_rule_distribution(df):
@@ -54,9 +66,9 @@ def analyze_complexity(df, data):
     complexity = []
     for project_key, project_data in data.items():
         metrics = project_data['metrics']['component']['measures']
-        for metric in metrics:
-            if metric['metric'] == 'complexity':
-                complexity.append({'Project': project_key, 'Complexity': int(metric['value'])})
+        complexity_value = next((int(metric['value']) for metric in metrics if metric['metric'] == 'complexity'), None)
+        if complexity_value is not None:
+            complexity.append({'Project': project_key, 'Complexity': complexity_value})
     df_complexity = pd.DataFrame(complexity)
     return df_complexity
 
@@ -101,12 +113,14 @@ def create_effort_debt_chart(effort_debt_analysis, save_path):
     plt.close()
 
 def create_component_distribution_chart(component_distribution, save_path):
-    plt.figure(figsize=(10, 6))
-    component_distribution.plot(kind='bar', color='skyblue')
-    plt.title('Issue Distribution by Component')
-    plt.xlabel('Component')
-    plt.ylabel('Issue Count')
-    plt.xticks(rotation=90, ha='right')
+    plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos componentes
+    top_components = component_distribution.nlargest(20)  # Mostra os 20 componentes com mais problemas
+    top_components.sort_values(ascending=True, inplace=True)
+    top_components.plot(kind='barh', color='skyblue', ax=plt.gca())
+    plt.title('Top 20 Components by Issue Count')
+    plt.xlabel('Issue Count')
+    plt.ylabel('Component')
+    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
     plt.savefig(os.path.join(save_path, 'component_distribution.png'))
     plt.close()
 
@@ -133,12 +147,13 @@ def create_code_lines_chart(df_lines, save_path):
     plt.close()
 
 def create_complexity_chart(df_complexity, save_path):
-    plt.figure(figsize=(10, 6))
-    df_complexity.plot(kind='bar', x='Project', y='Complexity', color='skyblue')
-    plt.title('Code Complexity per Project')
-    plt.xlabel('Project')
-    plt.ylabel('Complexity')
-    plt.xticks(rotation=90, ha='right')
+    plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos projetos
+    df_complexity.sort_values(by='Complexity', ascending=True, inplace=True)
+    df_complexity.plot(kind='barh', x='Project', y='Complexity', color='skyblue', ax=plt.gca())
+    plt.title('Cyclomatic Complexity per Project')
+    plt.xlabel('Complexity')
+    plt.ylabel('Project')
+    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
     plt.savefig(os.path.join(save_path, 'complexity.png'))
     plt.close()
 
