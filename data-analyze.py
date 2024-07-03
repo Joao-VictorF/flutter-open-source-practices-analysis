@@ -47,14 +47,14 @@ def analyze_rule_distribution(df):
     return rule_counts
 
 def analyze_code_lines(df, data):
-    lines = []
+    lines_of_code = []
     for project_key, project_data in data.items():
         metrics = project_data['metrics']['component']['measures']
-        for metric in metrics:
-            if metric['metric'] == 'ncloc':
-                lines.append({'Project': project_key, 'Lines of Code': int(metric['value'])})
-    df_lines = pd.DataFrame(lines)
-    return df_lines
+        loc_value = next((int(metric['value']) for metric in metrics if metric['metric'] == 'ncloc'), None)
+        if loc_value is not None:
+            lines_of_code.append({'Project': project_key, 'Lines of Code': loc_value})
+    df_lines_of_code = pd.DataFrame(lines_of_code)
+    return df_lines_of_code
 
 def analyze_complexity(df, data):
     complexity = []
@@ -125,13 +125,19 @@ def create_rule_distribution_chart(rule_counts, save_path):
     plt.savefig(os.path.join(save_path, 'rule_distribution.png'))
     plt.close()
 
-def create_code_lines_chart(df_lines, save_path):
-    plt.figure(figsize=(10, 6))
-    df_lines.plot(kind='bar', x='Project', y='Lines of Code', color='skyblue')
+def create_code_lines_chart(df_lines_of_code, save_path):
+    plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos projetos
+    df_lines_of_code.sort_values(by='Lines of Code', ascending=True, inplace=True)
+    ax = df_lines_of_code.plot(kind='barh', x='Project', y='Lines of Code', color='skyblue', ax=plt.gca())
     plt.title('Lines of Code per Project')
-    plt.xlabel('Project')
-    plt.ylabel('Lines of Code')
-    plt.xticks(rotation=90, ha='right')
+    plt.xlabel('Lines of Code')
+    plt.ylabel('Project')
+    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+
+    # Adiciona os valores nas barras
+    # for index, value in enumerate(df_lines_of_code['Lines of Code']):
+    #     ax.text(value + 10, index, f"{value}", va='center', ha='left')
+
     plt.savefig(os.path.join(save_path, 'lines_of_code.png'))
     plt.close()
 
@@ -174,7 +180,7 @@ def visualize_data(df, data, save_path):
     severity_counts = analyze_severity(df)
     component_distribution = analyze_component_distribution(df)
     rule_counts = analyze_rule_distribution(df)
-    df_lines = analyze_code_lines(df, data)
+    df_lines_of_code = analyze_code_lines(df, data)
     df_complexity = analyze_complexity(df, data)
     df_duplicated_lines = analyze_duplicated_lines_density(df, data)
     
@@ -182,7 +188,7 @@ def visualize_data(df, data, save_path):
     create_pie_chart_severity(severity_counts, save_path)
     create_component_distribution_chart(component_distribution, save_path)
     create_rule_distribution_chart(rule_counts, save_path)
-    create_code_lines_chart(df_lines, save_path)
+    create_code_lines_chart(df_lines_of_code, save_path)
     create_complexity_chart(df_complexity, save_path)
     create_duplicated_lines_density_chart(df_duplicated_lines, save_path)
 
