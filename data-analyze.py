@@ -149,13 +149,19 @@ def create_code_lines_chart(df_lines, save_path):
 def create_complexity_chart(df_complexity, save_path):
     plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos projetos
     df_complexity.sort_values(by='Complexity', ascending=True, inplace=True)
-    df_complexity.plot(kind='barh', x='Project', y='Complexity', color='skyblue', ax=plt.gca())
-    plt.title('Cyclomatic Complexity per Project')
+    ax = df_complexity.plot(kind='barh', x='Project', y='Complexity', color='skyblue', ax=plt.gca())
+    plt.title('Code Complexity per Project')
     plt.xlabel('Complexity')
     plt.ylabel('Project')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+
+    # Adiciona os valores nas barras
+    for index, value in enumerate(df_complexity['Complexity']):
+        ax.text(value + 1, index, f"{value:.2f}", va='center', ha='left')
+    
     plt.savefig(os.path.join(save_path, 'complexity.png'))
     plt.close()
+
 
 def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
     plt.figure(figsize=(10, 12))
