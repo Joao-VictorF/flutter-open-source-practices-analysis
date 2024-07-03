@@ -76,9 +76,9 @@ def analyze_duplicated_lines_density(df, data):
     duplicated_lines = []
     for project_key, project_data in data.items():
         metrics = project_data['metrics']['component']['measures']
-        for metric in metrics:
-            if metric['metric'] == 'duplicated_lines_density':
-                duplicated_lines.append({'Project': project_key, 'Duplicated Lines Density': float(metric['value'])})
+        duplicated_density_value = next((float(metric['value']) for metric in metrics if metric['metric'] == 'duplicated_lines_density'), None)
+        if duplicated_density_value is not None and duplicated_density_value > 0:
+            duplicated_lines.append({'Project': project_key, 'Duplicated Lines Density': duplicated_density_value})
     df_duplicated_lines = pd.DataFrame(duplicated_lines)
     return df_duplicated_lines
 
@@ -158,12 +158,18 @@ def create_complexity_chart(df_complexity, save_path):
     plt.close()
 
 def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
-    plt.figure(figsize=(10, 6))
-    df_duplicated_lines.plot(kind='bar', x='Project', y='Duplicated Lines Density', color='skyblue')
-    plt.title('Duplicated Lines Density per Project')
-    plt.xlabel('Project')
-    plt.ylabel('Duplicated Lines Density')
-    plt.xticks(rotation=90, ha='right')
+    plt.figure(figsize=(10, 12))
+    df_duplicated_lines.sort_values(by='Duplicated Lines Density', ascending=True, inplace=True)
+    ax = df_duplicated_lines.plot(kind='barh', x='Project', y='Duplicated Lines Density', color='skyblue', ax=plt.gca())
+    plt.title('Duplicated Lines Density per Project (> 0)')
+    plt.xlabel('Duplicated Lines Density')
+    plt.ylabel('Project')
+    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+    
+    # Adiciona os valores nas barras
+    for index, value in enumerate(df_duplicated_lines['Duplicated Lines Density']):
+        ax.text(value + 0.1, index, f"{value:.2f}", va='center', ha='left')
+    
     plt.savefig(os.path.join(save_path, 'duplicated_lines_density.png'))
     plt.close()
 
