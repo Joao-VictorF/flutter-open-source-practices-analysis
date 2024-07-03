@@ -116,13 +116,19 @@ def create_component_distribution_chart(component_distribution, save_path):
     plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos componentes
     top_components = component_distribution.nlargest(20)  # Mostra os 20 componentes com mais problemas
     top_components.sort_values(ascending=True, inplace=True)
-    top_components.plot(kind='barh', color='skyblue', ax=plt.gca())
-    plt.title('Top 20 Components by Issue Count')
-    plt.xlabel('Issue Count')
+    ax = top_components.plot(kind='barh', color='skyblue', ax=plt.gca())
+    plt.title('Top 20 Components by VBP Count')
+    plt.xlabel('VBP Count')
     plt.ylabel('Component')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+
+    # Adiciona os valores nas barras
+    for index, value in enumerate(top_components):
+        ax.text(value + 0.5, index, f"{value}", va='center', ha='left')
+
     plt.savefig(os.path.join(save_path, 'component_distribution.png'))
     plt.close()
+
 
 def create_rule_distribution_chart(rule_counts, save_path):
     plt.figure(figsize=(10, 6))
@@ -161,7 +167,6 @@ def create_complexity_chart(df_complexity, save_path):
     
     plt.savefig(os.path.join(save_path, 'complexity.png'))
     plt.close()
-
 
 def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
     plt.figure(figsize=(10, 12))
