@@ -25,12 +25,6 @@ def analyze_severity(df):
     severity_counts = df['Severity'].value_counts()
     return severity_counts
 
-def analyze_effort_debt(df):
-    df['Effort'] = pd.to_numeric(df['Effort'].str.replace('min', ''), errors='coerce')
-    df['Debt'] = pd.to_numeric(df['Debt'].str.replace('min', ''), errors='coerce')
-    effort_debt_analysis = df.groupby('Severity')[['Effort', 'Debt']].sum()
-    return effort_debt_analysis
-
 def extract_project_and_filename(component):
     # Divide o componente pelo separador ':' e considera apenas a última parte (o nome do arquivo)
     # e a primeira parte antes do ':', que é o nome do projeto
@@ -99,17 +93,6 @@ def create_pie_chart_severity(severity_counts, save_path):
     plt.pie(severity_counts, labels=severity_counts.index, autopct='%1.1f%%', startangle=140, colors=severity_colors)
     plt.title('Proportion of Severity Levels in Code Smells')
     plt.savefig(os.path.join(save_path, 'severity_proportion.png'))
-    plt.close()
-
-def create_effort_debt_chart(effort_debt_analysis, save_path):
-    plt.figure(figsize=(10, 6))
-    effort_debt_analysis.plot(kind='bar', color=['lightblue', 'lightcoral'])
-    plt.title('Effort and Debt Analysis by Severity Level')
-    plt.xlabel('Severity Levels')
-    plt.ylabel('Effort/Debt')
-    plt.xticks(rotation=0)
-    plt.legend(["Effort", "Debt"])
-    plt.savefig(os.path.join(save_path, 'effort_debt_analysis.png'))
     plt.close()
 
 def create_component_distribution_chart(component_distribution, save_path):
@@ -189,7 +172,6 @@ def visualize_data(df, data, save_path):
         os.makedirs(save_path)
     
     severity_counts = analyze_severity(df)
-    effort_debt_analysis = analyze_effort_debt(df)
     component_distribution = analyze_component_distribution(df)
     rule_counts = analyze_rule_distribution(df)
     df_lines = analyze_code_lines(df, data)
@@ -198,7 +180,6 @@ def visualize_data(df, data, save_path):
     
     create_bar_chart_severity(severity_counts, save_path)
     create_pie_chart_severity(severity_counts, save_path)
-    create_effort_debt_chart(effort_debt_analysis, save_path)
     create_component_distribution_chart(component_distribution, save_path)
     create_rule_distribution_chart(rule_counts, save_path)
     create_code_lines_chart(df_lines, save_path)
