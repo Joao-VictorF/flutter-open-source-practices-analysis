@@ -76,6 +76,41 @@ def analyze_duplicated_lines_density(df, data):
     df_duplicated_lines = pd.DataFrame(duplicated_lines)
     return df_duplicated_lines
 
+def normalize_project_name(name):
+    return name.replace(':', '/')
+
+def analyze_vbps_vs_ncloc(df, df_lines_of_code):
+    # Normalize project names in both dataframes
+    df['Project'] = df['Project'].apply(normalize_project_name)
+    df_lines_of_code['Project'] = df_lines_of_code['Project'].apply(normalize_project_name)
+    
+    # Count VBPs per project
+    vbp_counts = df['Project'].value_counts().reset_index()
+    vbp_counts.columns = ['Project', 'VBP Count']
+    
+    # Merge VBP counts with lines of code
+    merged_df = pd.merge(vbp_counts, df_lines_of_code, on='Project', how='inner')
+    
+    if not merged_df.empty:
+        # Calculate VBPs per 1000 lines of code
+        merged_df['VBPs per 1000 LOC'] = (merged_df['VBP Count'] / merged_df['Lines of Code']) * 1000
+    
+    return merged_df
+
+def analyze_vbps_vs_complexity(df, df_complexity):
+    # Normalize project names in both dataframes
+    df['Project'] = df['Project'].apply(normalize_project_name)
+    df_complexity['Project'] = df_complexity['Project'].apply(normalize_project_name)
+    
+    # Count VBPs per project
+    vbp_counts = df['Project'].value_counts().reset_index()
+    vbp_counts.columns = ['Project', 'VBP Count']
+    
+    # Merge VBP counts with complexity
+    merged_df = pd.merge(vbp_counts, df_complexity, on='Project', how='inner')
+    
+    return merged_df
+
 def create_bar_chart_severity(severity_counts, save_path):
     plt.figure(figsize=(10, 6))
     plt.bar(severity_counts.index, severity_counts, color=severity_colors)
@@ -164,14 +199,48 @@ def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
     plt.savefig(os.path.join(save_path, 'duplicated_lines_density.png'))
     plt.close()
 
-def save_summary_to_json(severity_counts, component_distribution, rule_counts, df_lines_of_code, df_complexity, df_duplicated_lines, save_path):
+def create_vbps_vs_ncloc_chart(df_vbps_vs_ncloc, save_path):
+    if df_vbps_vs_ncloc.empty:
+        print("No data available for VBPs vs LOC chart.")
+        return
+    plt.figure(figsize=(10, 12))
+    df_vbps_vs_ncloc.sort_values(by='VBPs per 1000 LOC', ascending=False, inplace=True)
+    ax = df_vbps_vs_ncloc.plot(kind='barh', x='Project', y='VBPs per 1000 LOC', color='skyblue', ax=plt.gca())
+    plt.title('VBPs por 1000 Linhas de Código por Projeto')
+    plt.tight_layout()
+    
+    for index, value in enumerate(df_vbps_vs_ncloc['VBPs per 1000 LOC']):
+        ax.text(value + 0.1, index, f"{value:.2f}", va='center', ha='left')
+    
+    plt.savefig(os.path.join(save_path, 'vbps_per_1000_loc.png'))
+    plt.close()
+
+def create_vbps_vs_complexity_chart(df_vbps_vs_complexity, save_path):
+    if df_vbps_vs_complexity.empty:
+        print("No data available for VBPs vs Complexity chart.")
+        return
+    plt.figure(figsize=(10, 12))
+    df_vbps_vs_complexity.sort_values(by='VBP Count', ascending=False, inplace=True)
+    ax = df_vbps_vs_complexity.plot(kind='barh', x='Project', y='VBP Count', color='skyblue', ax=plt.gca())
+    plt.title('VBPs por Projeto em Relação à Complexidade')
+    plt.tight_layout()
+    
+    for index, value in enumerate(df_vbps_vs_complexity['VBP Count']):
+        ax.text(value + 0.1, index, f"{value}", va='center', ha='left')
+    
+    plt.savefig(os.path.join(save_path, 'vbps_vs_complexity.png'))
+    plt.close()
+
+def save_summary_to_json(severity_counts, component_distribution, rule_counts, df_lines_of_code, df_complexity, df_duplicated_lines, df_vbps_vs_ncloc, df_vbps_vs_complexity, save_path):
     summary = {
         'severity_counts': severity_counts.to_dict(),
         'top_components': component_distribution.nlargest(20).to_dict(),
         'top_rules': rule_counts.to_dict(),
         'lines_of_code': df_lines_of_code.to_dict(orient='records'),
         'complexity': df_complexity.to_dict(orient='records'),
-        'duplicated_lines_density': df_duplicated_lines.to_dict(orient='records')
+        'duplicated_lines_density': df_duplicated_lines.to_dict(orient='records'),
+        'vbps_vs_ncloc': df_vbps_vs_ncloc.to_dict(orient='records'),
+        'vbps_vs_complexity': df_vbps_vs_complexity.to_dict(orient='records')
     }
     with open(os.path.join(save_path, 'summary.json'), 'w') as file:
         json.dump(summary, file, indent=4)
@@ -186,6 +255,8 @@ def visualize_data(df, data, save_path):
     df_lines_of_code = analyze_code_lines(df, data)
     df_complexity = analyze_complexity(df, data)
     df_duplicated_lines = analyze_duplicated_lines_density(df, data)
+    df_vbps_vs_ncloc = analyze_vbps_vs_ncloc(df, df_lines_of_code)
+    df_vbps_vs_complexity = analyze_vbps_vs_complexity(df, df_complexity)
     
     create_bar_chart_severity(severity_counts, save_path)
     create_pie_chart_severity(severity_counts, save_path)
@@ -194,7 +265,9 @@ def visualize_data(df, data, save_path):
     create_code_lines_chart(df_lines_of_code, save_path)
     create_complexity_chart(df_complexity, save_path)
     create_duplicated_lines_density_chart(df_duplicated_lines, save_path)
-    save_summary_to_json(severity_counts, component_distribution, rule_counts, df_lines_of_code, df_complexity, df_duplicated_lines, save_path)
+    create_vbps_vs_ncloc_chart(df_vbps_vs_ncloc, save_path)
+    create_vbps_vs_complexity_chart(df_vbps_vs_complexity, save_path)
+    save_summary_to_json(severity_counts, component_distribution, rule_counts, df_lines_of_code, df_complexity, df_duplicated_lines, df_vbps_vs_ncloc, df_vbps_vs_complexity, save_path)
 
 if __name__ == "__main__":
     file_path = 'json-files/fetched_issues_data.json'
