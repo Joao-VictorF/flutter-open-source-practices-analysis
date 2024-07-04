@@ -81,9 +81,8 @@ def analyze_duplicated_lines_density(df, data):
 def create_bar_chart_severity(severity_counts, save_path):
     plt.figure(figsize=(10, 6))
     plt.bar(severity_counts.index, severity_counts, color=severity_colors)
-    plt.title('Distribution of Severity Levels in Code Smells')
-    plt.xlabel('Severity Levels')
-    plt.ylabel('Count')
+    plt.title("VBP's por Severidade")
+    plt.xlabel('Severidade')
     plt.xticks(rotation=0)
     for i, count in enumerate(severity_counts):
         plt.text(i, count, count, ha='center', va='bottom')
@@ -93,18 +92,16 @@ def create_bar_chart_severity(severity_counts, save_path):
 def create_pie_chart_severity(severity_counts, save_path):
     plt.figure(figsize=(10, 6))
     plt.pie(severity_counts, labels=severity_counts.index, autopct='%1.1f%%', startangle=140, colors=severity_colors)
-    plt.title('Proportion of Severity Levels in Code Smells')
+    plt.title("VBP's por Severidade (%)")
     plt.savefig(os.path.join(save_path, 'severity_proportion.png'))
     plt.close()
 
 def create_component_distribution_chart(component_distribution, save_path):
     plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos componentes
     top_components = component_distribution.nlargest(20)  # Mostra os 20 componentes com mais problemas
-    top_components.sort_values(ascending=True, inplace=True)
+    top_components.sort_values(ascending=False, inplace=True)
     ax = top_components.plot(kind='barh', color='skyblue', ax=plt.gca())
-    plt.title('Top 20 Components by VBP Count')
-    plt.xlabel('VBP Count')
-    plt.ylabel('Component')
+    plt.title("Top 20 componentes com mais casos de VBP's")
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
     # Adiciona os valores nas barras
@@ -117,9 +114,7 @@ def create_component_distribution_chart(component_distribution, save_path):
 def create_rule_distribution_chart(rule_distribution, save_path):
     plt.figure(figsize=(10, 8))  # Aumenta a altura da figura para caber todos os nomes das regras
     ax = rule_distribution.plot(kind='barh', color='skyblue', ax=plt.gca())
-    plt.title('Top Rules Comprising 70% of Issues')
-    plt.xlabel('Issue Count')
-    plt.ylabel('Rule')
+    plt.title('Regras mais violadas (70% dos casos de VBP)')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
     # Adiciona os valores nas barras
@@ -131,11 +126,9 @@ def create_rule_distribution_chart(rule_distribution, save_path):
 
 def create_code_lines_chart(df_lines_of_code, save_path):
     plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos projetos
-    df_lines_of_code.sort_values(by='Lines of Code', ascending=True, inplace=True)
+    df_lines_of_code.sort_values(by='Lines of Code', ascending=False, inplace=True)
     ax = df_lines_of_code.plot(kind='barh', x='Project', y='Lines of Code', color='skyblue', ax=plt.gca())
-    plt.title('Lines of Code per Project')
-    plt.xlabel('Lines of Code')
-    plt.ylabel('Project')
+    plt.title('Linhas de Código por Projeto')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
     # Adiciona os valores nas barras
@@ -147,11 +140,9 @@ def create_code_lines_chart(df_lines_of_code, save_path):
 
 def create_complexity_chart(df_complexity, save_path):
     plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos projetos
-    df_complexity.sort_values(by='Complexity', ascending=True, inplace=True)
+    df_complexity.sort_values(by='Complexity', ascending=False, inplace=True)
     ax = df_complexity.plot(kind='barh', x='Project', y='Complexity', color='skyblue', ax=plt.gca())
-    plt.title('Code Complexity per Project')
-    plt.xlabel('Complexity')
-    plt.ylabel('Project')
+    plt.title('Complexidade Ciclomática por Projeto')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
     # Adiciona os valores nas barras
@@ -163,11 +154,9 @@ def create_complexity_chart(df_complexity, save_path):
 
 def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
     plt.figure(figsize=(10, 12))
-    df_duplicated_lines.sort_values(by='Duplicated Lines Density', ascending=True, inplace=True)
+    df_duplicated_lines.sort_values(by='Duplicated Lines Density', ascending=False, inplace=True)
     ax = df_duplicated_lines.plot(kind='barh', x='Project', y='Duplicated Lines Density', color='skyblue', ax=plt.gca())
-    plt.title('Duplicated Lines Density per Project (> 0)')
-    plt.xlabel('Duplicated Lines Density')
-    plt.ylabel('Project')
+    plt.title('Densidade de Linhas Duplicadas por Projeto (%) (> 0)')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
     
     # Adiciona os valores nas barras
