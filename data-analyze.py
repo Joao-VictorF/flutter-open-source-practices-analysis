@@ -26,8 +26,6 @@ def analyze_severity(df):
     return severity_counts
 
 def extract_project_and_filename(component):
-    # Divide o componente pelo separador ':' e considera apenas a última parte (o nome do arquivo)
-    # e a primeira parte antes do ':', que é o nome do projeto
     parts = component.split(':')
     if len(parts) > 1:
         project_name = parts[0]
@@ -166,6 +164,18 @@ def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
     plt.savefig(os.path.join(save_path, 'duplicated_lines_density.png'))
     plt.close()
 
+def save_summary_to_json(severity_counts, component_distribution, rule_counts, df_lines_of_code, df_complexity, df_duplicated_lines, save_path):
+    summary = {
+        'severity_counts': severity_counts.to_dict(),
+        'top_components': component_distribution.nlargest(20).to_dict(),
+        'top_rules': rule_counts.to_dict(),
+        'lines_of_code': df_lines_of_code.to_dict(orient='records'),
+        'complexity': df_complexity.to_dict(orient='records'),
+        'duplicated_lines_density': df_duplicated_lines.to_dict(orient='records')
+    }
+    with open(os.path.join(save_path, 'summary.json'), 'w') as file:
+        json.dump(summary, file, indent=4)
+
 def visualize_data(df, data, save_path):
     if not os.path.exists(save_path):
         os.makedirs(save_path)
@@ -184,6 +194,7 @@ def visualize_data(df, data, save_path):
     create_code_lines_chart(df_lines_of_code, save_path)
     create_complexity_chart(df_complexity, save_path)
     create_duplicated_lines_density_chart(df_duplicated_lines, save_path)
+    save_summary_to_json(severity_counts, component_distribution, rule_counts, df_lines_of_code, df_complexity, df_duplicated_lines, save_path)
 
 if __name__ == "__main__":
     file_path = 'json-files/fetched_issues_data.json'
