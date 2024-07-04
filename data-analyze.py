@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import matplotlib.pyplot as plt
 import os
+from scipy.stats import pearsonr
 
 severity_colors = ['mediumaquamarine', 'orangered', 'mediumpurple']
 
@@ -164,10 +165,6 @@ def create_code_lines_chart(df_lines_of_code, save_path):
     plt.title('Linhas de Código por Projeto')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
-    # Adiciona os valores nas barras
-    # for index, value in enumerate(df_lines_of_code['Lines of Code']):
-    #     ax.text(value + 10, index, f"{value}", va='center', ha='left')
-
     plt.savefig(os.path.join(save_path, 'lines_of_code.png'))
     plt.close()
 
@@ -178,7 +175,6 @@ def create_complexity_chart(df_complexity, save_path):
     plt.title('Complexidade Ciclomática por Projeto')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
-    # Adiciona os valores nas barras
     for index, value in enumerate(df_complexity['Complexity']):
         ax.text(value + 1, index, f"{value:.2f}", va='center', ha='left')
     
@@ -192,7 +188,6 @@ def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
     plt.title('Densidade de Linhas Duplicadas por Projeto (%) (> 0)')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
     
-    # Adiciona os valores nas barras
     for index, value in enumerate(df_duplicated_lines['Duplicated Lines Density']):
         ax.text(value + 0.1, index, f"{value:.2f}", va='center', ha='left')
     
@@ -220,9 +215,11 @@ def create_vbps_vs_complexity_chart(df_vbps_vs_complexity, save_path):
         print("No data available for VBPs vs Complexity chart.")
         return
     plt.figure(figsize=(10, 12))
-    df_vbps_vs_complexity.sort_values(by='VBP Count', ascending=False, inplace=True)
+    df_vbps_vs_complexity.sort_values(by='Complexity', ascending=False, inplace=True)
     ax = df_vbps_vs_complexity.plot(kind='barh', x='Project', y='VBP Count', color='skyblue', ax=plt.gca())
     plt.title('VBPs por Projeto em Relação à Complexidade')
+    plt.xlabel('Número de VBPs')
+    plt.ylabel('Projetos')
     plt.tight_layout()
     
     for index, value in enumerate(df_vbps_vs_complexity['VBP Count']):
@@ -231,17 +228,22 @@ def create_vbps_vs_complexity_chart(df_vbps_vs_complexity, save_path):
     plt.savefig(os.path.join(save_path, 'vbps_vs_complexity.png'))
     plt.close()
 
-def save_summary_to_json(severity_counts, component_distribution, rule_counts, df_lines_of_code, df_complexity, df_duplicated_lines, df_vbps_vs_ncloc, df_vbps_vs_complexity, save_path):
-    summary = {
-        'severity_counts': severity_counts.to_dict(),
-        'top_components': component_distribution.nlargest(20).to_dict(),
-        'top_rules': rule_counts.to_dict(),
-        'lines_of_code': df_lines_of_code.to_dict(orient='records'),
-        'complexity': df_complexity.to_dict(orient='records'),
-        'duplicated_lines_density': df_duplicated_lines.to_dict(orient='records'),
-        'vbps_vs_ncloc': df_vbps_vs_ncloc.to_dict(orient='records'),
-        'vbps_vs_complexity': df_vbps_vs_complexity.to_dict(orient='records')
-    }
+
+def calculate_correlation(df, x, y):
+    correlation, _ = pearsonr(df[x], df[y])
+    return correlation
+
+def create_scatter_plot(df, x, y, title, xlabel, ylabel, save_path):
+    plt.figure(figsize=(10, 6))
+    plt.scatter(df[x], df[y], color='skyblue')
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.grid(True)
+    plt.savefig(os.path.join(save_path, f"{title.replace(' ', '_').lower()}.png"))
+    plt.close()
+
+def save_summary_to_json(summary, save_path):
     with open(os.path.join(save_path, 'summary.json'), 'w') as file:
         json.dump(summary, file, indent=4)
 
@@ -267,7 +269,34 @@ def visualize_data(df, data, save_path):
     create_duplicated_lines_density_chart(df_duplicated_lines, save_path)
     create_vbps_vs_ncloc_chart(df_vbps_vs_ncloc, save_path)
     create_vbps_vs_complexity_chart(df_vbps_vs_complexity, save_path)
-    save_summary_to_json(severity_counts, component_distribution, rule_counts, df_lines_of_code, df_complexity, df_duplicated_lines, df_vbps_vs_ncloc, df_vbps_vs_complexity, save_path)
+    
+    # Calculate correlations
+    if not df_vbps_vs_ncloc.empty:
+        correlation_vbp_loc = calculate_correlation(df_vbps_vs_ncloc, 'Lines of Code', 'VBP Count')
+        create_scatter_plot(df_vbps_vs_ncloc, 'Lines of Code', 'VBP Count', 'VBPs vs LOC', 'Lines of Code', 'VBP Count', save_path)
+    else:
+        correlation_vbp_loc = None
+
+    if not df_vbps_vs_complexity.empty:
+        correlation_vbp_complexity = calculate_correlation(df_vbps_vs_complexity, 'Complexity', 'VBP Count')
+        create_scatter_plot(df_vbps_vs_complexity, 'Complexity', 'VBP Count', 'VBPs vs Complexidade', 'Complexidade', 'VBP Count', save_path)
+    else:
+        correlation_vbp_complexity = None
+    
+    summary = {
+        'severity_counts': severity_counts.to_dict(),
+        'top_components': component_distribution.nlargest(20).to_dict(),
+        'top_rules': rule_counts.to_dict(),
+        'lines_of_code': df_lines_of_code.to_dict(orient='records'),
+        'complexity': df_complexity.to_dict(orient='records'),
+        'duplicated_lines_density': df_duplicated_lines.to_dict(orient='records'),
+        'vbps_vs_ncloc': df_vbps_vs_ncloc.to_dict(orient='records'),
+        'vbps_vs_complexity': df_vbps_vs_complexity.to_dict(orient='records'),
+        'correlation_vbp_loc': correlation_vbp_loc,
+        'correlation_vbp_complexity': correlation_vbp_complexity
+    }
+    
+    save_summary_to_json(summary, save_path)
 
 if __name__ == "__main__":
     file_path = 'json-files/fetched_issues_data.json'
