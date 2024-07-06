@@ -5,6 +5,17 @@ import os
 from scipy.stats import pearsonr
 
 severity_colors = ['mediumaquamarine', 'orangered', 'mediumpurple']
+rule_abbreviations = {
+    'dartanalyzer:exhaustive_cases': 'EC',
+    'dartanalyzer:always_declare_return_types': 'ADRT',
+    'dartanalyzer:constant_identifier_names': 'CIN',
+    'dartanalyzer:non_constant_identifier_names': 'NCIN',
+    'dartanalyzer:depend_on_referenced_packages': 'DRP',
+    'dartanalyzer:prefer_void_to_null': 'PVTN',
+    'dartanalyzer:library_private_types_in_public_api': 'LPTPA',
+    'dartanalyzer:no_leading_underscores_for_local_identifiers': 'NLULI',
+    'dartanalyzer:avoid_function_literals_in_foreach_calls': 'AFLFC'
+}
 
 def load_data(file_path):
     with open(file_path) as file:
@@ -94,7 +105,7 @@ def analyze_vbps_vs_ncloc(df, df_lines_of_code):
     
     if not merged_df.empty:
         # Calculate VBPs per 1000 lines of code
-        merged_df['VBPs per 1000 LOC'] = (merged_df['VBP Count'] / merged_df['Lines of Code']) * 1000
+        merged_df['VBPs per 1000 LCNC'] = (merged_df['VBP Count'] / merged_df['Lines of Code']) * 1000
     
     return merged_df
 
@@ -146,9 +157,12 @@ def create_component_distribution_chart(component_distribution, save_path):
     plt.close()
 
 def create_rule_distribution_chart(rule_distribution, save_path):
+    # Mapeia os nomes completos das regras para suas siglas
+    rule_distribution.index = rule_distribution.index.map(rule_abbreviations)
+    
     plt.figure(figsize=(10, 8))  # Aumenta a altura da figura para caber todos os nomes das regras
     ax = rule_distribution.plot(kind='barh', color='skyblue', ax=plt.gca())
-    plt.title('Regras mais violadas (70% dos casos de VBP)')
+    plt.title('Regras mais violadas (70% dos casos de VBPs)')
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
     # Adiciona os valores nas barras
@@ -196,15 +210,15 @@ def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
 
 def create_vbps_vs_ncloc_chart(df_vbps_vs_ncloc, save_path):
     if df_vbps_vs_ncloc.empty:
-        print("No data available for VBPs vs LOC chart.")
+        print("No data available for VBPs vs LCNC chart.")
         return
     plt.figure(figsize=(10, 12))
-    df_vbps_vs_ncloc.sort_values(by='VBPs per 1000 LOC', ascending=False, inplace=True)
-    ax = df_vbps_vs_ncloc.plot(kind='barh', x='Project', y='VBPs per 1000 LOC', color='skyblue', ax=plt.gca())
+    df_vbps_vs_ncloc.sort_values(by='VBPs per 1000 LCNC', ascending=False, inplace=True)
+    ax = df_vbps_vs_ncloc.plot(kind='barh', x='Project', y='VBPs per 1000 LCNC', color='skyblue', ax=plt.gca())
     plt.title('VBPs por 1000 Linhas de Código por Projeto')
     plt.tight_layout()
     
-    for index, value in enumerate(df_vbps_vs_ncloc['VBPs per 1000 LOC']):
+    for index, value in enumerate(df_vbps_vs_ncloc['VBPs per 1000 LCNC']):
         ax.text(value + 0.1, index, f"{value:.2f}", va='center', ha='left')
     
     plt.savefig(os.path.join(save_path, 'vbps_per_1000_loc.png'))
@@ -273,7 +287,7 @@ def visualize_data(df, data, save_path):
     # Calculate correlations
     if not df_vbps_vs_ncloc.empty:
         correlation_vbp_loc = calculate_correlation(df_vbps_vs_ncloc, 'Lines of Code', 'VBP Count')
-        create_scatter_plot(df_vbps_vs_ncloc, 'Lines of Code', 'VBP Count', 'VBPs vs LOC', 'Lines of Code', 'VBP Count', save_path)
+        create_scatter_plot(df_vbps_vs_ncloc, 'Lines of Code', 'VBP Count', 'VBPs vs LCNC', 'Lines of Code', 'VBP Count', save_path)
     else:
         correlation_vbp_loc = None
 

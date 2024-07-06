@@ -11,4 +11,5 @@ RUN pip install -r /tmp/requirements.txt
 
 COPY . /app/
 
-CMD ["python", "get-sonarqube-data.py", "--date", "16-05-2024"]
+# CMD ["python", "get-sonarqube-data.py", "--date", "16-05-2024"]
+CMD ["python", "data-analyze.py"]
