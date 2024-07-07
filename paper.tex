@@ -20,7 +20,24 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{makecell}
+
+\usepackage{tcolorbox}
+\usepackage{minted}
+
 \usepackage[utf8]{inputenc}  
+
+\tcbset{
+  codeSnippetStyle/.style={
+    colback=gray!10, % cor de fundo mais clara
+    colframe=gray!30!, % cor da borda
+    title=#1, % título da caixa
+    coltitle=black, % cor do título
+    boxrule=0.2mm, % espessura da borda
+    arc=3mm, % arredondamento dos cantos
+    width=\textwidth, % largura da caixa
+    boxsep=7pt
+  }
+}
 
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
@@ -145,27 +162,139 @@ A Figura~\ref{fig:rule_distribution} mostra a distribuição das regras de boas 
 \label{fig:rule_distribution}
 \end{figure}
 
-A Tabela~\ref{tab:vbps_description} apresenta a descrição das siglas usadas no gráfico acima, detalhando cada uma das violações de boas práticas identificadas.
+% A Tabela~\ref{tab:vbps_description} apresenta a descrição das siglas usadas no gráfico acima, detalhando cada uma das violações de boas práticas identificadas.
 
-\setlength{\extrarowheight}{3pt}
-\begin{table}[H]
-\centering
-\caption{Descrição dos VBPs Mais Frequentes}
-\label{tab:vbps_description}
-\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1.5cm}|X|}
-\hline
-\textbf{Sigla} & \textbf{Descrição} \\ \hline
-EC & \makecell[l]{\textbf{Exhaustive Cases:} Verifica se todas as possibilidades em uma enumeração\\ são cobertas.} \\ \hline
-ADRT & \makecell[l]{\textbf{Always Declare Return Types:} Garante que todas as funções tenham tipos\\ de retorno declarados.} \\ \hline
-CIN & \makecell[l]{\textbf{Constant Identifier Names:} Verifica se os nomes das constantes estão em\\ conformidade com as convenções de nomenclatura.} \\ \hline
-NCIN & \makecell[l]{\textbf{Non Constant Identifier Names:} Verifica se os nomes dos identificadores\\ não constantes estão em conformidade com\\ as convenções de nomenclatura.} \\ \hline
-DRP & \makecell[l]{\textbf{Depend on Referenced Packages:} Garante que as dependências declaradas\\ estejam sendo utilizadas.} \\ \hline
-PVTN & \makecell[l]{\textbf{Prefer Void to Null:} Recomenda o uso de void em vez de null quando\\ apropriado.} \\ \hline
-LPTPA & \makecell[l]{\textbf{Library Private Types in Public API:} Verifica se tipos privados de\\ biblioteca não são expostos na API pública.} \\ \hline
-NLULI & \makecell[l]{\textbf{No Leading Underscores for Local Identifiers:} Evita o uso de sublinha-\\dos à frente de identificadores locais.} \\ \hline
-AFLFC & \makecell[l]{\textbf{Avoid Function Literals in Foreach Calls:} Recomenda evitar literais de\\ função em chamadas de foreach.} \\ \hline
-\end{tabularx}
-\end{table}
+% \setlength{\extrarowheight}{3pt}
+% \begin{table}[H]
+% \centering
+% \caption{Descrição dos VBPs Mais Frequentes}
+% \label{tab:vbps_description}
+% \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1.5cm}|X|}
+% \hline
+% \textbf{Sigla} & \textbf{Descrição} \\ \hline
+% EC & \makecell[l]{\textbf{Exhaustive Cases:} Verifica se todas as possibilidades em uma enumeração\\ são cobertas.} \\ \hline
+% ADRT & \makecell[l]{\textbf{Always Declare Return Types:} Garante que todas as funções tenham tipos\\ de retorno declarados.} \\ \hline
+% CIN & \makecell[l]{\textbf{Constant Identifier Names:} Verifica se os nomes das constantes estão em\\ conformidade com as convenções de nomenclatura.} \\ \hline
+% NCIN & \makecell[l]{\textbf{Non Constant Identifier Names:} Verifica se os nomes dos identificadores\\ não constantes estão em conformidade com\\ as convenções de nomenclatura.} \\ \hline
+% DRP & \makecell[l]{\textbf{Depend on Referenced Packages:} Garante que as dependências declaradas\\ estejam sendo utilizadas.} \\ \hline
+% PVTN & \makecell[l]{\textbf{Prefer Void to Null:} Recomenda o uso de void em vez de null quando\\ apropriado.} \\ \hline
+% LPTPA & \makecell[l]{\textbf{Library Private Types in Public API:} Verifica se tipos privados de\\ biblioteca não são expostos na API pública.} \\ \hline
+% NLULI & \makecell[l]{\textbf{No Leading Underscores for Local Identifiers:} Evita o uso de sublinha-\\dos à frente de identificadores locais.} \\ \hline
+% AFLFC & \makecell[l]{\textbf{Avoid Function Literals in Foreach Calls:} Recomenda evitar literais de\\ função em chamadas de foreach.} \\ \hline
+% \end{tabularx}
+% \end{table}
+
+\subsubsection{Avoid Function Literals in Foreach Calls (AFLFC)}
+Recomenda evitar literais de função em chamadas de \texttt{foreach}. No exemplo abaixo, uma literal de função é passada para o \texttt{forEach}, o que não é recomendado.
+
+\begin{tcolorbox}[codeSnippetStyle={Grocery-App/lib/presentation/my\_bag\_page/controller/my\_bag\_controller.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+onSelected(dynamic value) { 
+  selectedDropDownValue = value as SelectionPopupModel; 
+  myBagModelObj.value.dropdownItemList.forEach((element) {
+    element.isSelected = false; 
+    if (element.id == value.id) {
+      element.isSelected = true;
+    }
+  });
+  myBagModelObj.value.dropdownItemList.refresh(); 
+}
+\end{minted}
+\end{tcolorbox}
+
+\subsubsection{No Leading Underscores for Local Identifiers (NLULI)}
+Evita o uso de sublinhados à frente de identificadores locais. No exemplo abaixo, o identificador \texttt{\_currentSong} usa um sublinhado no início, o que não é recomendado para identificadores locais.
+
+\begin{tcolorbox}[codeSnippetStyle={flutter-tunein/lib/services/musicService.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+final Tune? _currentSong = _playerState$.value.value;
+\end{minted}
+\end{tcolorbox}
+
+\subsubsection{Library Private Types in Public API (LPTPA)}
+Verifica se tipos privados de biblioteca não são expostos na API pública. No exemplo abaixo, o tipo privado \texttt{\_QuickCalculationQuestionViewState} é usado em uma API pública.
+
+\begin{tcolorbox}[codeSnippetStyle={math-metrix/lib/src/ui/quickCalculation/quick\_calculation\_question\_view.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+_QuickCalculationQuestionViewState createState() => _QuickCalculationQuestionViewState();
+\end{minted}
+\end{tcolorbox}
+
+\subsubsection{Prefer Void to Null (PVTN)}
+Recomenda o uso de \texttt{void} em vez de \texttt{null} quando apropriado. No exemplo abaixo, o tipo \texttt{Null} é usado, mas deveria ser substituído por \texttt{void}.
+
+\begin{tcolorbox}[codeSnippetStyle={admin-portal/lib/ui/auth/login\_view.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+final Completer<Null> completer = Completer<Null>();
+\end{minted}
+\end{tcolorbox}
+
+
+\subsubsection{Depend on Referenced Packages (DRP)}
+Garante que as dependências declaradas estejam sendo utilizadas. No exemplo abaixo, o pacote \texttt{collection} é importado, mas não é referenciado no código.
+
+\begin{tcolorbox}[codeSnippetStyle={openreads/lib/ui/statistics\_screen/widgets/read\_stats\_by\_month.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+import 'package:collection/collection.dart';
+\end{minted}
+\end{tcolorbox}
+
+
+\subsubsection{Non Constant Identifier Names (NCIN)}
+Verifica se os nomes dos identificadores não constantes estão conforme as convenções de nomenclatura. No exemplo abaixo, o identificador \texttt{SettingService} não segue a convenção de nomenclatura recomendada para identificadores não constantes.
+
+\begin{tcolorbox}[codeSnippetStyle={flutter-tunein/lib/pages/library/tracks.page.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+final SettingService = locator<settingService>();
+\end{minted}
+\end{tcolorbox}
+
+
+\subsubsection{Constant Identifier Names (CIN)}
+Verifica se os nomes das constantes estão conforme as convenções de nomenclatura. No exemplo abaixo, a constante \texttt{TITLE\_ABOUT} não segue a convenção de nomenclatura recomendada para identificadores constantes.
+
+\begin{tcolorbox}[codeSnippetStyle={WhatTodo/lib/utils/keys.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+static const TITLE_ABOUT = "titleAbout";
+\end{minted}
+\end{tcolorbox}
+
+\subsubsection{Always Declare Return Types (ADRT)}
+Verifica se todos os métodos têm tipos de retorno explicitamente declarados. No exemplo abaixo, o método \texttt{getUserType} não possui um tipo de retorno declarado, o que pode levar a problemas de manutenção e compreensão do código.
+
+\begin{tcolorbox}[codeSnippetStyle={gsy\_github\_app\_flutter/lib/page/my\_page.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+getUserType() {
+  if (_getStore()?.state.userInfo == null) {
+    return null;
+  }
+  return _getStore()?.state.userInfo?.type;
+}
+\end{minted}
+\end{tcolorbox}
+
+\subsubsection{Exhaustive Case (EC)}
+Verifica se todas as possibilidades em uma enumeração são cobertas. No exemplo abaixo, o enum \texttt{EntityType} possui mais opções do que as tratadas no \texttt{switch}, fazendo com que nem todos os casos de uso sejam contemplados e não há uma opção \texttt{default}. O código foi retirado de \texttt{admin-portal/lib/ui/app/invoice/invoice\_email\_view.dart}:
+
+\begin{tcolorbox}[codeSnippetStyle={gsy\_github\_app\_flutter/lib/page/my\_page.dart}]
+\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
+String? getDesignId(EntityType entityType) {
+    switch (entityType) {
+    
+      case EntityType.invoice:
+        return defaultInvoiceDesignId;
+      case EntityType.quote:
+        return defaultQuoteDesignId;
+      case EntityType.credit:
+        return defaultCreditDesignId;
+      case EntityType.purchaseOrder:
+        return defaultPurchaseOrderDesignId;
+    }
+    print('## Error: unhandled entity type: $entityType for design id');
+    return '';
+}
+\end{minted}
+\end{tcolorbox}
 
 \section{Discussão}
 Os resultados obtidos nesta pesquisa fornecem uma visão abrangente sobre a adesão às melhores práticas de desenvolvimento em projetos open-source Flutter. A análise revelou uma correlação forte entre o número de VBPs e o número de linhas de código não comentadas (LCNC), indicando que projetos maiores tendem a apresentar mais violações. Além disso, uma correlação moderada foi observada entre VBPs e a complexidade ciclomática, sugerindo que a complexidade do código também desempenha um papel significativo na qualidade do software.
