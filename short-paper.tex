@@ -166,27 +166,27 @@ String? getUserType() {
 \end{tcolorbox}
 
 \section{Discussão}
-Os resultados obtidos nesta pesquisa fornecem uma visão abrangente sobre a adesão às melhores práticas de desenvolvimento em projetos open-source Flutter. A análise revelou uma correlação forte entre o número de VBPs e o número de linhas de código não comentadas (LCNC), indicando que projetos maiores tendem a apresentar mais violações. Além disso, uma correlação moderada foi observada entre VBPs e a complexidade ciclomática, sugerindo que a complexidade do código também desempenha um papel significativo na qualidade do software.
+Os resultados desta pesquisa mostram uma forte correlação entre o número de VBPs e as linhas de código não comentadas (LCNC), indicando que projetos maiores tendem a apresentar mais violações. Também foi observada uma correlação moderada entre VBPs e complexidade ciclomática, sugerindo que a complexidade do código influencia a qualidade do software.
 
-Comparando com estudos anteriores, nossos achados são consistentes com a literatura que destaca a importância de práticas de codificação estruturada para a manutenibilidade do software. Por exemplo, a duplicação de código, frequentemente apontada como um fator negativo na literatura, também foi identificada como uma área problemática em nossos dados \cite{hunt1999pragmatic}.
+Esses achados são consistentes com a literatura, que destaca a importância de práticas de codificação estruturada para a manutenibilidade do software \cite{hunt1999pragmatic}. As regras mais violadas, como Exhaustive Cases e Always Declare Return Types, indicam áreas onde os desenvolvedores devem concentrar esforços para melhorar a qualidade do código.
 
-Os gráficos das regras mais violadas sugerem áreas específicas onde os desenvolvedores podem concentrar esforços para melhorar a qualidade do código. Regras como `Exhaustive Cases` e `Always Declare Return Types` foram violadas frequentemente, indicando a necessidade de maior atenção a essas práticas.
-
-Para prevenir essas violações e melhorar a qualidade do código, recomendamos fortemente o uso de ferramentas de lint e análise de código durante o desenvolvimento. Ferramentas como o SonarQube, Dart Analyzer e outros linters podem identificar potenciais violações de boas práticas em tempo real, permitindo que os desenvolvedores corrijam problemas antes que eles se tornem significativos. A integração dessas ferramentas no processo de desenvolvimento contínuo pode ajudar a manter um alto padrão de qualidade de código, reduzir a complexidade ciclomática e evitar a duplicação de código \cite{martin2011clean}.
+Recomendamos o uso de ferramentas de lint e análise de código, como SonarQube e Dart Analyzer, durante o desenvolvimento. Essas ferramentas podem identificar violações de boas práticas em tempo real, permitindo correções antes que se tornem significativas. A integração dessas ferramentas no processo de desenvolvimento contínuo pode ajudar a manter a qualidade do código, reduzir a complexidade ciclomática e evitar a duplicação de código \cite{martin2011clean}.
 
 \section{Conclusão}
-Esta pesquisa investigou a adesão às melhores práticas de desenvolvimento em projetos open-source Flutter, analisando 45 projetos para identificar Violações de Boas Práticas (VBPs). Foram encontradas mais de 10.000 violações, com uma distribuição significativa entre diferentes severidades.
+Esta pesquisa analisou 45 projetos open-source Flutter para identificar Violações de Boas Práticas (VBPs), encontrando mais de 10.000 violações distribuídas entre diferentes severidades.
 
-Os principais achados incluem:
+Principais achados:
 \begin{itemize}
-    \item Uma correlação forte entre VBPs e LCNC, indicando que projetos maiores tendem a ter mais violações.
-    \item Uma correlação moderada entre VBPs e complexidade ciclomática, sugerindo a importância de manter a complexidade do código sob controle.
-    \item Identificação das regras mais frequentemente violadas, fornecendo áreas focais para melhorias na qualidade do código.
+\item Forte correlação entre VBPs e LCNC, indicando mais violações em projetos maiores.
+\item Correlação moderada entre VBPs e complexidade ciclomática, sugerindo a importância de controlar a complexidade do código.
+\item Identificação das regras mais violadas, fornecendo áreas focais para melhorias na qualidade do código.
 \end{itemize}
 
-Esses resultados têm implicações práticas para desenvolvedores de Flutter, destacando áreas específicas onde melhorias podem ser feitas para aderir melhor às práticas recomendadas e melhorar a qualidade e manutenibilidade do código.
+Esses resultados destacam áreas específicas onde melhorias podem ser feitas para aderir melhor às práticas recomendadas e melhorar a qualidade e manutenibilidade do código em projetos Flutter.
 
-Para trabalhos futuros, recomendamos uma análise mais detalhada das causas das violações de boas práticas e a investigação de técnicas automatizadas para auxiliar os desenvolvedores a aderirem a essas práticas. Além disso, seria benéfico expandir o conjunto de dados para incluir mais projetos e explorar a eficácia de diferentes ferramentas e metodologias de análise de código.
+Para futuros trabalhos, recomendamos uma análise mais detalhada das causas das violações de boas práticas e a investigação de técnicas automatizadas para auxiliar os desenvolvedores a aderirem a essas práticas. Expandir o conjunto de dados para incluir mais projetos e explorar a eficácia de diferentes ferramentas e metodologias de análise de código também seria benéfico.
+
+
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
