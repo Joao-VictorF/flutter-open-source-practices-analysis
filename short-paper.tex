@@ -78,10 +78,10 @@ Este estudo investiga a adesão às melhores práticas de programação recomend
 
 \section{Metodologia}
 
-Esta seção detalha o procedimento utilizado para avaliar a incidência e o impacto de violações de boas práticas (VBPs) em projetos open source desenvolvidos com Flutter. A metodologia é estruturada em quatro etapas principais: seleção de projetos, configuração das ferramentas de análise, coleta de dados e avaliação dos resultados.
+Esta seção detalha o procedimento utilizado para avaliar a incidência e o impacto de violações de boas práticas (VBPs) em projetos open source desenvolvidos com Flutter. A metodologia é estruturada em quatro etapas principais: seleção de projetos, configuração das ferramentas de análise, coleta de dados e avaliação dos resultados. Além das VBPs, também analisamos a complexidade do código dos projetos, medida por métricas como a complexidade ciclomática e número de linhas de código não comentadas (LCNC) \cite{mccabe1976complexity}, para avaliar a qualidade dos projetos Flutter.
 
 \subsection{Seleção de Projetos}
-A seleção apropriada dos projetos é crucial para garantir a relevância da pesquisa. Foram escolhidos projetos open source Flutter hospedados no GitHub, considerando critérios que indicam que o projeto é relevante e atual. Os critérios incluem:
+A seleção apropriada dos projetos é crucial para garantir a relevância da pesquisa.Inicialmente, foram considerados 152 projetos open source Flutter recomendados pela comunidade e disponíveis no repositório \textit{Open-Source Flutter Apps}\footnote{Tortuvshin Bayarsaikhan. Open-Source Flutter Apps. 2023. Disponível em: \url{https://github.com/tortuvshin/open-source-flutter-apps}. Acessado em: 08 de julho de 2024}. Aplicamos critérios específicos para filtrar esses projetos, resultando em uma amostra final de 50 projetos relevantes para análise:
 \begin{enumerate}
     \item No mínimo 30 commits, garantindo múltiplas atualizações.
     \item Último commit feito nos últimos 3 anos, assegurando atividade recente.
