@@ -132,29 +132,12 @@ Esta subseção apresenta as cinco regras de boas práticas mais frequentemente 
 \label{fig:rule_distribution}
 \end{figure}
 
-A Tabela~\ref{tab:vbps_description} apresenta a descrição das siglas usadas no gráfico acima, detalhando cada uma das violações de boas práticas identificadas.
-
-\setlength{\extrarowheight}{3pt}
-\begin{table}[H]
-\centering
-\caption{Descrição dos VBPs Mais Frequentes}
-\label{tab:vbps_description}
-\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1.5cm}|X|}
-\hline
-\textbf{Sigla} & \textbf{Descrição} \\ \hline
-EC & \makecell[l]{\textbf{Exhaustive Cases:} Verifica se todas as possibilidades em uma enumeração\\ são cobertas.} \\ \hline
-ADRT & \makecell[l]{\textbf{Always Declare Return Types:} Garante que todas as funções tenham tipos\\ de retorno declarados.} \\ \hline
-CIN & \makecell[l]{\textbf{Constant Identifier Names:} Verifica se os nomes das constantes estão em\\ conformidade com as convenções de nomenclatura.} \\ \hline
-NCIN & \makecell[l]{\textbf{Non Constant Identifier Names:} Verifica se os nomes dos identificadores\\ não constantes estão em conformidade com\\ as convenções de nomenclatura.} \\ \hline
-DRP & \makecell[l]{\textbf{Depend on Referenced Packages:} Garante que as dependências declaradas\\ estejam sendo utilizadas.} \\ \hline
-
-\end{tabularx}
-\end{table}
+As siglas usadas no gráfico representam: \textbf{EC}: \textit{Exhaustive Cases}, verifica se todas as possibilidades em uma enumeração são cobertas; \textbf{ADRT}: \textit{Always Declare Return Types}, garante que todas as funções tenham tipos de retorno declarados; \textbf{CIN}: \textit{Constant Identifier Names}, verifica se os nomes das constantes estão em conformidade com as convenções de nomenclatura; \textbf{NCIN}: \textit{Non Constant Identifier Names}, verifica se os nomes dos identificadores não constantes estão em conformidade com as convenções de nomenclatura; \textbf{DRP}: \textit{Depend on Referenced Packages}, garante que as dependências declaradas estejam sendo utilizadas.
 
 % Esses dados indicam haver uma necessidade significativa de melhorar a adesão a práticas fundamentais de codificação, como garantir que todas as possibilidades em enumerações sejam cobertas, declarar explicitamente os tipos de retorno de funções, e seguir as convenções de nomenclatura tanto para constantes quanto para identificadores não constantes.
 
 \subsection{Exemplo de Violação Crítica: Always Declare Return Types (ADRT)}
-Entre as regras mais frequentemente violadas, a prática de declarar explicitamente os tipos de retorno de métodos (\textbf{ADRT}) se destaca por sua importância na manutenção e compreensão do código. Declarar tipos de retorno é crucial para garantir que o comportamento esperado das funções seja claro e para evitar erros durante a compilação e execução do código.
+Entre as regras mais frequentemente violadas, a prática de declarar explicitamente os tipos de retorno de métodos (\textbf{ADRT}) se destaca por sua importância na manutenção e compreensão do código.
 
 No exemplo abaixo, o método \texttt{getUserType} não possui um tipo de retorno declarado, o que pode levar a problemas de manutenção e compreensão do código:
 
