@@ -107,146 +107,56 @@ Os resultados foram analisados para identificar a prevalência e severidade das 
 
 \section{Resultados}
 
-Esta seção apresenta os resultados obtidos a partir da análise dos projetos open source desenvolvidos com Flutter, com foco na avaliação da adesão às melhores práticas de desenvolvimento.
+Esta seção apresenta os resultados obtidos a partir da análise dos projetos open source desenvolvidos com Flutter, com foco na avaliação da adesão às melhores práticas de desenvolvimento. Foram analisados 45 projetos utilizando o SonarQube para identificar VBPs. No total, foram encontradas 10.120 VBPs, distribuídas em três níveis de severidade: 5.149 violações menores, 4.273 violações maiores e 698 violações críticas.
 
-\subsection{Análise de Violações de Boas Práticas (VBPs)}
-Foram analisados 45 projetos utilizando o SonarQube para identificar VBPs. No total, foram encontradas 10.120 VBPs, distribuídas em três níveis de severidade.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.85\textwidth]{severity_distribution.png}
-\caption{Distribuição das VBPs por Severidade}
-\label{fig:vbps_severity_distribution}
-\end{figure}
-
-\subsection{Correlação entre VBPs e Linhas de Código Não Comentadas (LCNC)}
-Calculamos o coeficiente de correlação de Pearson para avaliar a relação entre VBPs e o número de LCNC. Observamos uma correlação forte (\textit{r} = 0.8978), indicando que mais linhas de código estão associadas a mais VBPs.
+\subsection{Correlação entre VBPs, Linhas de Código Não Comentadas (LCNC) e Complexidade Ciclomática}
+Calculamos o coeficiente de correlação de Pearson para avaliar a relação entre VBPs e o número de LCNC, bem como entre VBPs e complexidade ciclomática. Observamos uma correlação forte (\textit{r} = 0.8978) entre VBPs e LCNC, indicando que mais linhas de código estão associadas a mais VBPs. Adicionalmente, uma correlação moderada (\textit{r} = 0.4509) foi encontrada entre VBPs e complexidade ciclomática, sugerindo que projetos com maior complexidade ciclomática tendem a ter mais VBPs.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.85\textwidth]{vbps_vs_lcnc.png}
-\caption{Correlação entre VBPs e LCNC}
-\label{fig:vbps_vs_lcnc}
-\end{figure}
-
-\subsection{Correlação entre VBPs e Complexidade Ciclomática}
-Também analisamos a correlação entre VBPs e complexidade ciclomática, resultando em uma correlação moderada (\textit{r} = 0.4509). Isso sugere que projetos com maior complexidade ciclomática tendem a ter mais VBPs.
-\begin{figure}[H]
-\centering
-\includegraphics[width=.85\textwidth]{vbps_vs_complexidade.png}
-\caption{Correlação entre VBPs e Complexidade}
-\label{fig:vbps_vs_complexidade}
+\includegraphics[width=0.45\textwidth]{vbps_vs_lcnc.png}
+\includegraphics[width=0.45\textwidth]{vbps_vs_complexidade.png}
+\caption{Correlação entre VBPs e LCNC (esquerda) e entre VBPs e Complexidade Ciclomática (direita)}
+\label{fig
+}
 \end{figure}
 
 \subsection{Regras Mais Violadas}
-A Figura~\ref{fig:rule_distribution} mostra a distribuição das regras de boas práticas mais frequentemente violadas nos projetos analisados. As siglas das regras são usadas para facilitar a visualização.
+Esta subseção apresenta as cinco regras de boas práticas mais frequentemente violadas nos projetos analisados. A Figura~\ref{fig
+} mostra a distribuição dessas regras, facilitando a visualização das principais áreas problemáticas nos projetos Flutter.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.75\textwidth]{rule_distribution.png}
+\includegraphics[width=.5\textwidth]{rule_distribution.png}
 \caption{Distribuição das Regras Mais Violadas}
 \label{fig:rule_distribution}
 \end{figure}
 
-% A Tabela~\ref{tab:vbps_description} apresenta a descrição das siglas usadas no gráfico acima, detalhando cada uma das violações de boas práticas identificadas.
+A Tabela~\ref{tab:vbps_description} apresenta a descrição das siglas usadas no gráfico acima, detalhando cada uma das violações de boas práticas identificadas.
 
-% \setlength{\extrarowheight}{3pt}
-% \begin{table}[H]
-% \centering
-% \caption{Descrição dos VBPs Mais Frequentes}
-% \label{tab:vbps_description}
-% \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1.5cm}|X|}
-% \hline
-% \textbf{Sigla} & \textbf{Descrição} \\ \hline
-% EC & \makecell[l]{\textbf{Exhaustive Cases:} Verifica se todas as possibilidades em uma enumeração\\ são cobertas.} \\ \hline
-% ADRT & \makecell[l]{\textbf{Always Declare Return Types:} Garante que todas as funções tenham tipos\\ de retorno declarados.} \\ \hline
-% CIN & \makecell[l]{\textbf{Constant Identifier Names:} Verifica se os nomes das constantes estão em\\ conformidade com as convenções de nomenclatura.} \\ \hline
-% NCIN & \makecell[l]{\textbf{Non Constant Identifier Names:} Verifica se os nomes dos identificadores\\ não constantes estão em conformidade com\\ as convenções de nomenclatura.} \\ \hline
-% DRP & \makecell[l]{\textbf{Depend on Referenced Packages:} Garante que as dependências declaradas\\ estejam sendo utilizadas.} \\ \hline
-% PVTN & \makecell[l]{\textbf{Prefer Void to Null:} Recomenda o uso de void em vez de null quando\\ apropriado.} \\ \hline
-% LPTPA & \makecell[l]{\textbf{Library Private Types in Public API:} Verifica se tipos privados de\\ biblioteca não são expostos na API pública.} \\ \hline
-% NLULI & \makecell[l]{\textbf{No Leading Underscores for Local Identifiers:} Evita o uso de sublinha-\\dos à frente de identificadores locais.} \\ \hline
-% AFLFC & \makecell[l]{\textbf{Avoid Function Literals in Foreach Calls:} Recomenda evitar literais de\\ função em chamadas de foreach.} \\ \hline
-% \end{tabularx}
-% \end{table}
+\setlength{\extrarowheight}{3pt}
+\begin{table}[H]
+\centering
+\caption{Descrição dos VBPs Mais Frequentes}
+\label{tab:vbps_description}
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1.5cm}|X|}
+\hline
+\textbf{Sigla} & \textbf{Descrição} \\ \hline
+EC & \makecell[l]{\textbf{Exhaustive Cases:} Verifica se todas as possibilidades em uma enumeração\\ são cobertas.} \\ \hline
+ADRT & \makecell[l]{\textbf{Always Declare Return Types:} Garante que todas as funções tenham tipos\\ de retorno declarados.} \\ \hline
+CIN & \makecell[l]{\textbf{Constant Identifier Names:} Verifica se os nomes das constantes estão em\\ conformidade com as convenções de nomenclatura.} \\ \hline
+NCIN & \makecell[l]{\textbf{Non Constant Identifier Names:} Verifica se os nomes dos identificadores\\ não constantes estão em conformidade com\\ as convenções de nomenclatura.} \\ \hline
+DRP & \makecell[l]{\textbf{Depend on Referenced Packages:} Garante que as dependências declaradas\\ estejam sendo utilizadas.} \\ \hline
 
-\subsubsection{Avoid Function Literals in Foreach Calls (AFLFC)}
-Recomenda evitar literais de função em chamadas de \texttt{foreach}. No exemplo abaixo, uma literal de função é passada para o \texttt{forEach}.
+\end{tabularx}
+\end{table}
 
-\begin{tcolorbox}[codeSnippetStyle={Grocery-App/lib/presentation/my\_bag\_page/controller/my\_bag\_controller.dart}]
-\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
-onSelected(dynamic value) { 
-  selectedDropDownValue = value as SelectionPopupModel; 
-  myBagModelObj.value.dropdownItemList.forEach((element) {
-    element.isSelected = false; 
-    if (element.id == value.id) {
-      element.isSelected = true;
-    }
-  });
-  myBagModelObj.value.dropdownItemList.refresh(); 
-}
-\end{minted}
-\end{tcolorbox}
+% Esses dados indicam haver uma necessidade significativa de melhorar a adesão a práticas fundamentais de codificação, como garantir que todas as possibilidades em enumerações sejam cobertas, declarar explicitamente os tipos de retorno de funções, e seguir as convenções de nomenclatura tanto para constantes quanto para identificadores não constantes.
 
-\subsubsection{No Leading Underscores for Local Identifiers (NLULI)}
-É sugerido evitar o uso de sublinhados à frente de identificadores locais. No exemplo abaixo, o identificador \texttt{\_currentSong} usa um sublinhado no início.
+\subsection{Exemplo de Violação Crítica: Always Declare Return Types (ADRT)}
+Entre as regras mais frequentemente violadas, a prática de declarar explicitamente os tipos de retorno de métodos (\textbf{ADRT}) se destaca por sua importância na manutenção e compreensão do código. Declarar tipos de retorno é crucial para garantir que o comportamento esperado das funções seja claro e para evitar erros durante a compilação e execução do código.
 
-\begin{tcolorbox}[codeSnippetStyle={flutter-tunein/lib/services/musicService.dart}]
-\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
-final Tune? _currentSong = _playerState$.value.value;
-\end{minted}
-\end{tcolorbox}
-
-\subsubsection{Library Private Types in Public API (LPTPA)}
-Verifica se tipos privados de biblioteca não são expostos na API pública. No exemplo abaixo, o tipo privado \texttt{\_QuickCalculationQuestionViewState} é usado em uma API pública.
-
-\begin{tcolorbox}[codeSnippetStyle={math-metrix/lib/src/ui/quickCalculation/quick\_calculation\_question\_view.dart}]
-\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
-_QuickCalculationQuestionViewState createState() => _QuickCalculationQuestionViewState();
-\end{minted}
-\end{tcolorbox}
-
-\subsubsection{Prefer Void to Null (PVTN)}
-Recomenda o uso de \texttt{void} em vez de \texttt{null} quando apropriado. No exemplo abaixo, o tipo \texttt{Null} é usado, mas deveria ser substituído por \texttt{void}.
-
-\begin{tcolorbox}[codeSnippetStyle={admin-portal/lib/ui/auth/login\_view.dart}]
-\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
-final Completer<Null> completer = Completer<Null>();
-\end{minted}
-\end{tcolorbox}
-
-
-\subsubsection{Depend on Referenced Packages (DRP)}
-Garante que as dependências declaradas estejam sendo utilizadas. No exemplo abaixo, o pacote \texttt{collection} é importado, mas não é referenciado no código.
-
-\begin{tcolorbox}[codeSnippetStyle={openreads/lib/ui/statistics\_screen/widgets/read\_stats\_by\_month.dart}]
-\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
-import 'package:collection/collection.dart';
-\end{minted}
-\end{tcolorbox}
-
-
-\subsubsection{Non Constant Identifier Names (NCIN)}
-Verifica se os nomes dos identificadores não constantes estão conforme as convenções de nomenclatura. No exemplo abaixo, o identificador \texttt{SettingService} não segue a convenção de nomenclatura recomendada para identificadores não constantes.
-
-\begin{tcolorbox}[codeSnippetStyle={flutter-tunein/lib/pages/library/tracks.page.dart}]
-\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
-final SettingService = locator<settingService>();
-\end{minted}
-\end{tcolorbox}
-
-
-\subsubsection{Constant Identifier Names (CIN)}
-Verifica se os nomes das constantes estão conforme as convenções de nomenclatura. No exemplo abaixo, a constante \texttt{TITLE\_ABOUT} não segue a convenção de nomenclatura recomendada para identificadores constantes.
-
-\begin{tcolorbox}[codeSnippetStyle={WhatTodo/lib/utils/keys.dart}]
-\begin{minted}[breaklines, fontsize=\footnotesize]{dart}
-static const TITLE_ABOUT = "titleAbout";
-\end{minted}
-\end{tcolorbox}
-
-\subsubsection{Always Declare Return Types (ADRT)}
-É recomendado que todos os métodos tenham tipos de retorno explicitamente declarados. No exemplo abaixo, o método \texttt{getUserType} não possui um tipo de retorno declarado, o que pode levar a problemas de manutenção e compreensão do código.
+No exemplo abaixo, o método \texttt{getUserType} não possui um tipo de retorno declarado, o que pode levar a problemas de manutenção e compreensão do código:
 
 \begin{tcolorbox}[codeSnippetStyle={gsy\_github\_app\_flutter/lib/page/my\_page.dart}]
 \begin{minted}[breaklines, fontsize=\footnotesize]{dart}
@@ -259,25 +169,15 @@ getUserType() {
 \end{minted}
 \end{tcolorbox}
 
-\subsubsection{Exhaustive Case (EC)}
-É sugerido que todas as possibilidades em uma enumeração estejam cobertas. No exemplo abaixo, o enum \texttt{EntityType} possui mais opções do que as tratadas no \texttt{switch}, fazendo com que nem todos os casos de uso sejam contemplados, além disso, não há uma opção \texttt{default}.
+Ao invés disso, o método deveria declarar explicitamente o tipo de retorno, como mostrado abaixo:
 
-\begin{tcolorbox}[codeSnippetStyle={gsy\_github\_app\_flutter/lib/page/my\_page.dart}]
+\begin{tcolorbox}[codeSnippetStyle={}]
 \begin{minted}[breaklines, fontsize=\footnotesize]{dart}
-String? getDesignId(EntityType entityType) {
-    switch (entityType) {
-    
-      case EntityType.invoice:
-        return defaultInvoiceDesignId;
-      case EntityType.quote:
-        return defaultQuoteDesignId;
-      case EntityType.credit:
-        return defaultCreditDesignId;
-      case EntityType.purchaseOrder:
-        return defaultPurchaseOrderDesignId;
-    }
-    print('## Error: unhandled entity type: $entityType for design id');
-    return '';
+String? getUserType() {
+  if (_getStore()?.state.userInfo == null) {
+    return null;
+  }
+  return _getStore()?.state.userInfo?.type;
 }
 \end{minted}
 \end{tcolorbox}
