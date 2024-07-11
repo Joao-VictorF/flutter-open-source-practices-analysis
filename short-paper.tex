@@ -83,14 +83,15 @@ Este estudo investiga a adesão às melhores práticas de programação recomend
 A metodologia adotada foi estruturada em quatro etapas principais: seleção de projetos, configuração das ferramentas de análise, coleta de dados e avaliação dos resultados. Além das VBPs, também analisamos a complexidade do código dos projetos, medida por métricas como a complexidade ciclomática e número de linhas de código não comentadas (LCNC) \cite{mccabe1976complexity}, para avaliar a qualidade dos projetos Flutter.
 
 \subsection{Seleção de Projetos}
-A seleção apropriada dos projetos é crucial para garantir a relevância da pesquisa. Inicialmente, foram considerados 152 projetos open source Flutter recomendados pela comunidade e disponíveis no repositório \textit{Open-Source Flutter Apps}\footnote{Tortuvshin Bayarsaikhan. Open-Source Flutter Apps. 2023. Disponível em: \url{https://github.com/tortuvshin/open-source-flutter-apps}. Acessado em: 08 de julho de 2024}. Aplicamos critérios específicos para filtrar esses projetos, resultando em uma amostra final de 50 projetos relevantes para análise:
+A seleção apropriada dos projetos é crucial para garantir a relevância da pesquisa. Inicialmente, foram considerados os projetos open source Flutter recomendados pela comunidade e disponíveis no repositório \textit{Open-Source Flutter Apps}\footnote{Tortuvshin Bayarsaikhan. Open-Source Flutter Apps. 2023. Disponível em: \url{https://github.com/tortuvshin/open-source-flutter-apps}. Acessado em: 08 de julho de 2024}, que contava com 152 projetos em 15 de maio de 2024. Aplicamos critérios específicos para filtrar esses projetos, resultando em uma amostra final de 50 projetos relevantes para análise:
 \begin{enumerate}
-    \item No mínimo 30 commits, garantindo múltiplas atualizações.
+    \item No mínimo 30 commits, garantindo projetos com um histórico consistente de atividade.
     \item Último commit feito nos últimos 3 anos, assegurando atividade recente.
     \item Mínimo de 30 estrelas no GitHub, indicando relevância na comunidade.
 \end{enumerate}
 
-\subsection{Configuração, Execução e Análise dos Dados}
+
+\subsection{Procedimento e Análise dos Resultados}
 Utilizamos o SonarQube, uma plataforma reconhecida por sua capacidade de análise de código, para identificar VBPs. O SonarQube foi instalado em um container Docker para garantir um ambiente de análise controlado e consistente. Também configuramos o SonarScanner para coletar dados detalhados dos projetos.
 
 A análise foi realizada utilizando o SonarScanner, configurado com um arquivo \texttt{sonar-project.properties} específico para cada projeto. Foram coletadas métricas como número de VBPs, severidade e complexidade ciclomática. Os seguintes passos foram seguidos para realizar a análise:
@@ -99,7 +100,8 @@ A análise foi realizada utilizando o SonarScanner, configurado com um arquivo \
     \item Download e instalação do plugin para análise de Dart e Flutter.
     \item Configuração e execução do SonarScanner nos projetos selecionados.
 \end{enumerate}
-Durante a fase de análise, 5 dos 50 projetos inicialmente selecionados foram excluídos devido a problemas técnicos. Entre os problemas encontrados estavam incompatibilidades de versões de dependências e uso de bibliotecas descontinuadas.
+
+Durante a fase de análise, 5 projetos foram excluídos devido a problemas técnicos. Entre os problemas encontrados estavam incompatibilidades de versões de dependências, incompatibilidades de bibliotecas e uso de bibliotecas descontinuadas.
 
 Os dados foram coletados através da API do SonarQube e armazenados em formato JSON. Utilizamos scripts em Python para automatizar a coleta, tratamento e análise dos dados, garantindo consistência e precisão nos resultados. 
 
@@ -110,20 +112,18 @@ Os resultados foram analisados para identificar a prevalência e severidade das 
 A análise dos 45 projetos open source desenvolvidos com Flutter, utilizando o SonarQube, revelou 10.120 VBPs. Estas foram distribuídas em três níveis de severidade: 5.149 menores, 4.273 maiores e 698 críticas, avaliando a adesão às melhores práticas de desenvolvimento.
 
 \subsection{Correlação entre VBPs, Linhas de Código Não Comentadas (LCNC) e Complexidade Ciclomática}
-Calculamos o coeficiente de correlação de Pearson para avaliar a relação entre VBPs e o número de LCNC, bem como entre VBPs e complexidade ciclomática. Observamos uma correlação forte (\textit{r} = 0.8978) entre VBPs e LCNC, indicando que mais linhas de código estão associadas a mais VBPs. Adicionalmente, uma correlação moderada (\textit{r} = 0.4509) foi encontrada entre VBPs e complexidade ciclomática, sugerindo que projetos com maior complexidade ciclomática tendem a ter mais VBPs.
+Calculamos o coeficiente de correlação de Pearson para avaliar a relação entre VBPs e o número de LCNC, bem como entre VBPs e complexidade ciclomática. Na Figura~\ref{fig:vbps_vs_lcnc_and_vbps_vs_complexity}, observamos uma correlação forte (\textit{r} = 0.8978) entre VBPs e LCNC, indicando que mais linhas de código estão associadas a mais VBPs. Adicionalmente, a Figura~\ref{fig:vbps_vs_lcnc_and_vbps_vs_complexity} mostra uma correlação moderada (\textit{r} = 0.4509) entre VBPs e complexidade ciclomática, sugerindo que projetos com maior complexidade ciclomática tendem a ter mais VBPs.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{images/vbps_vs_lcnc.png}
-\includegraphics[width=0.45\textwidth]{images/vbps_vs_complexidade.png}
+\includegraphics[width=0.45\textwidth]{images/correlação_entre_vbps_e_lcnc.png}
+\includegraphics[width=0.45\textwidth]{images/correlação_entre_vbps_e_complexidade_ciclomática.png}
 \caption{Correlação entre VBPs e LCNC (esquerda) e entre VBPs e Complexidade Ciclomática (direita)}
-\label{fig
-}
+\label{fig:vbps_vs_lcnc_and_vbps_vs_complexity}
 \end{figure}
 
 \subsection{Regras Mais Violadas}
-A Figura~\ref{fig
-} mostra a distribuição das cinco regras de boas práticas mais frequentemente violadas nos projetos analisados. A VBP mais frequente foi a EC (\textit{Exhaustive Cases}), com um total de 1544 violações. Esta regra verifica se todas as possibilidades em uma enumeração são cobertas, garantindo que o código seja robusto e não falhe ao encontrar casos inesperados. A alta frequência de violações desta regra indica que os desenvolvedores muitas vezes deixam de tratar todos os casos possíveis em enumerações, o que pode levar a erros em tempo de execução e a um código menos confiável.
+A Figura~\ref{fig:rule_distribution} mostra a distribuição das cinco regras de boas práticas mais frequentemente violadas nos projetos analisados. A VBP mais frequente foi a EC (\textit{Exhaustive Cases}), com um total de 1544 violações. Esta regra verifica se todas as possibilidades em uma enumeração são cobertas, garantindo que o código seja robusto e não falhe ao encontrar casos inesperados. A alta frequência de violações desta regra indica que os desenvolvedores muitas vezes deixam de tratar todos os casos possíveis em enumerações, o que pode levar a erros em tempo de execução e a um código menos confiável.
 
 \begin{figure}[H]
 \centering
@@ -154,13 +154,6 @@ getUserType() {
 \subsection{Resultados Encontrados}
 Esta pesquisa analisou 45 projetos open-source Flutter para identificar Violações de Boas Práticas (VBPs), encontrando mais de 10.000 violações distribuídas entre diferentes severidades.
 
-%Principais achados:
-%\begin{itemize}
-%\item Forte correlação entre VBPs e LCNC, indicando mais violações em projetos maiores.
-%\item Correlação moderada entre VBPs e complexidade ciclomática, sugerindo a importância de controlar a complexidade do código.
-%\item Identificação das regras mais violadas, fornecendo áreas focais para melhorias na qualidade do código.
-%\end{itemize}
-
 Esses resultados destacam áreas específicas onde melhorias podem ser feitas para aderir melhor às práticas recomendadas e melhorar a qualidade e manutenibilidade do código em projetos Flutter.
 
 Os resultados desta pesquisa mostram uma forte correlação entre o número de VBPs e as linhas de código não comentadas (LCNC), indicando que projetos maiores tendem a apresentar mais violações. Também foi observada uma correlação moderada entre VBPs e complexidade ciclomática, sugerindo que a complexidade do código influencia a qualidade do software.
@@ -171,8 +164,6 @@ Para reduzir tais violações, uma abordagem eficaz é fomentar o uso de ferrame
 
 \subsection{Trabalhos Futuros}
 Para futuros trabalhos, espera-se realizar uma análise mais detalhada das causas das violações de boas práticas e uma investigação de processos automatizadas para auxiliar os desenvolvedores a aderirem a essas práticas. Outra possibilidade é expandir o conjunto de dados para incluir mais projetos e explorar a eficácia de diferentes ferramentas e metodologias de análise de código.
-
-
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
