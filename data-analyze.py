@@ -53,10 +53,12 @@ def analyze_component_distribution(df):
 
 def analyze_rule_distribution(df):
     rule_counts = df['Rule'].value_counts()
-    total_issues = rule_counts.sum()
-    cumulative_percentage = rule_counts.cumsum() / total_issues
-    top_rules = rule_counts[cumulative_percentage <= 0.70]
-    return top_rules
+    return rule_counts.head(5)
+    # Top 70% of violated rules
+    # total_issues = rule_counts.sum()
+    # cumulative_percentage = rule_counts.cumsum() / total_issues
+    # top_rules = rule_counts[cumulative_percentage <= 0.70]
+    # return top_rules
 
 def analyze_code_lines(df, data):
     lines_of_code = []
@@ -162,12 +164,16 @@ def create_rule_distribution_chart(rule_distribution, save_path):
     
     plt.figure(figsize=(10, 8))  # Aumenta a altura da figura para caber todos os nomes das regras
     ax = rule_distribution.plot(kind='barh', color='skyblue', ax=plt.gca())
-    plt.title('Regras mais violadas (70% dos casos de VBPs)')
+    plt.title('Top 5 Regras mais violadas', fontsize=20)
+    plt.xlabel('Número de VBPs', fontsize=20)
+    plt.ylabel('Regras', fontsize=20)
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20)
     plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
 
     # Adiciona os valores nas barras
     for index, value in enumerate(rule_distribution):
-        ax.text(value, index, f"{value}", va='center', ha='right')
+        ax.text(value, index, f"{value}", va='center', ha='right', fontsize=20)
     
     plt.savefig(os.path.join(save_path, 'rule_distribution.png'))
     plt.close()
@@ -242,7 +248,6 @@ def create_vbps_vs_complexity_chart(df_vbps_vs_complexity, save_path):
     plt.savefig(os.path.join(save_path, 'vbps_vs_complexity.png'))
     plt.close()
 
-
 def calculate_correlation(df, x, y):
     correlation, _ = pearsonr(df[x], df[y])
     return correlation
@@ -250,9 +255,11 @@ def calculate_correlation(df, x, y):
 def create_scatter_plot(df, x, y, title, xlabel, ylabel, save_path):
     plt.figure(figsize=(10, 6))
     plt.scatter(df[x], df[y], color='skyblue')
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
+    plt.title(title, fontsize=20)
+    plt.xlabel(xlabel, fontsize=20)
+    plt.ylabel(ylabel, fontsize=20)
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20)
     plt.grid(True)
     plt.savefig(os.path.join(save_path, f"{title.replace(' ', '_').lower()}.png"))
     plt.close()
@@ -287,13 +294,13 @@ def visualize_data(df, data, save_path):
     # Calculate correlations
     if not df_vbps_vs_ncloc.empty:
         correlation_vbp_loc = calculate_correlation(df_vbps_vs_ncloc, 'Lines of Code', 'VBP Count')
-        create_scatter_plot(df_vbps_vs_ncloc, 'Lines of Code', 'VBP Count', 'VBPs vs LCNC', 'Lines of Code', 'VBP Count', save_path)
+        create_scatter_plot(df_vbps_vs_ncloc, 'Lines of Code', 'VBP Count', 'Correlação entre VBPs e LCNC', 'Linhas de Código Não Comentadas', 'Número de VBPs', save_path)
     else:
         correlation_vbp_loc = None
 
     if not df_vbps_vs_complexity.empty:
         correlation_vbp_complexity = calculate_correlation(df_vbps_vs_complexity, 'Complexity', 'VBP Count')
-        create_scatter_plot(df_vbps_vs_complexity, 'Complexity', 'VBP Count', 'VBPs vs Complexidade', 'Complexidade', 'VBP Count', save_path)
+        create_scatter_plot(df_vbps_vs_complexity, 'Complexity', 'VBP Count', 'Correlação entre VBPs e Complexidade Ciclomática', 'Complexidade', 'Número de VBPs', save_path)
     else:
         correlation_vbp_complexity = None
     
