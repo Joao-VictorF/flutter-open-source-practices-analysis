@@ -1,4 +1,4 @@
 .env
 repositories_data*
-fetched_issues_data.json
-analysis_results
+# fetched_issues_data.json
+# analysis_results

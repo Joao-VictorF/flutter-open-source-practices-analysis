@@ -1,0 +1,861 @@
+{
+    "severity_counts": {
+        "MINOR": 5149,
+        "MAJOR": 4273,
+        "CRITICAL": 698
+    },
+    "top_components": {
+        "invoiceninja/mock_login.dart": 221,
+        "moda20/musicService.dart": 179,
+        "CarGuo/gsy_string_zh.dart": 132,
+        "CarGuo/gsy_string_base.dart": 132,
+        "CarGuo/gsy_string_en.dart": 132,
+        "moda20/LandingPage.dart": 100,
+        "moda20/songTags.dart": 98,
+        "invoiceninja/company_details_vm.dart": 94,
+        "invoiceninja/company_gateway_actions.dart": 85,
+        "invoiceninja/tax_rate_actions.dart": 84,
+        "invoiceninja/payment_term_actions.dart": 84,
+        "moda20/albumTags.dart": 84,
+        "invoiceninja/webhook_actions.dart": 83,
+        "invoiceninja/token_actions.dart": 83,
+        "invoiceninja/group_actions.dart": 82,
+        "invoiceninja/design_actions.dart": 79,
+        "invoiceninja/user_actions.dart": 77,
+        "invoiceninja/recurring_invoice_actions.dart": 76,
+        "invoiceninja/settings_model.dart": 74,
+        "invoiceninja/webhook_model.dart": 69
+    },
+    "top_rules": {
+        "EC": 1544,
+        "ADRT": 1374,
+        "CIN": 1099,
+        "NCIN": 608,
+        "DRP": 564
+    },
+    "lines_of_code": [
+        {
+            "Project": "invoiceninja/admin-portal",
+            "Lines of Code": 258648
+        },
+        {
+            "Project": "proninyaroslav/libretrack",
+            "Lines of Code": 70977
+        },
+        {
+            "Project": "JoinSEEDS/seeds_light_wallet",
+            "Lines of Code": 45158
+        },
+        {
+            "Project": "proninyaroslav/blink-comparison",
+            "Lines of Code": 36974
+        },
+        {
+            "Project": "openfoodfacts/smooth-app",
+            "Lines of Code": 35452
+        },
+        {
+            "Project": "immich-app/immich",
+            "Lines of Code": 30997
+        },
+        {
+            "Project": "juniorise/spooky-mb",
+            "Lines of Code": 23540
+        },
+        {
+            "Project": "Suwayomi/Tachidesk-Sorayomi",
+            "Lines of Code": 21475
+        },
+        {
+            "Project": "moda20/flutter-tunein",
+            "Lines of Code": 19511
+        },
+        {
+            "Project": "CarGuo/gsy_github_app_flutter",
+            "Lines of Code": 17018
+        },
+        {
+            "Project": "mateusz-bak/openreads",
+            "Lines of Code": 15787
+        },
+        {
+            "Project": "wger-project/flutter",
+            "Lines of Code": 12997
+        },
+        {
+            "Project": "4seer/openflutterecommerceapp",
+            "Lines of Code": 11576
+        },
+        {
+            "Project": "piggyvault/piggyvault",
+            "Lines of Code": 10951
+        },
+        {
+            "Project": "TheAlphamerc/flutter_twitter_clone",
+            "Lines of Code": 10773
+        },
+        {
+            "Project": "woosignal/flutter-woocommerce-app",
+            "Lines of Code": 9638
+        },
+        {
+            "Project": "Widle-Studio/Grocery-App",
+            "Lines of Code": 8827
+        },
+        {
+            "Project": "KyleKun/one_second_diary",
+            "Lines of Code": 8220
+        },
+        {
+            "Project": "jogboms/tailor_made",
+            "Lines of Code": 8110
+        },
+        {
+            "Project": "hungps/flutter_pokedex",
+            "Lines of Code": 7595
+        },
+        {
+            "Project": "pichillilorenzo/flutter_browser_app",
+            "Lines of Code": 7508
+        },
+        {
+            "Project": "jaysavsani07/math-metrix",
+            "Lines of Code": 7462
+        },
+        {
+            "Project": "EnjoyingFOSS/feeel",
+            "Lines of Code": 6999
+        },
+        {
+            "Project": "hamaluik/timecop",
+            "Lines of Code": 6878
+        },
+        {
+            "Project": "Spyy004/LifeList",
+            "Lines of Code": 5769
+        },
+        {
+            "Project": "jesusrp98/spacex-go",
+            "Lines of Code": 4987
+        },
+        {
+            "Project": "deandreamatias/tv-randshow",
+            "Lines of Code": 4817
+        },
+        {
+            "Project": "devclub-iitd/ShareACab",
+            "Lines of Code": 4789
+        },
+        {
+            "Project": "o-ifeanyi/musicPlayer",
+            "Lines of Code": 3639
+        },
+        {
+            "Project": "JideGuru/FlutterEbookApp",
+            "Lines of Code": 3429
+        },
+        {
+            "Project": "LaCoro/ConsumerFlutterApp",
+            "Lines of Code": 3306
+        },
+        {
+            "Project": "simonbengtsson/airdash",
+            "Lines of Code": 3136
+        },
+        {
+            "Project": "ReceiptManager/receipt-manager-app",
+            "Lines of Code": 2549
+        },
+        {
+            "Project": "burhanrashid52/WhatTodo",
+            "Lines of Code": 2060
+        },
+        {
+            "Project": "ArizArmeidi/FlutterWeather",
+            "Lines of Code": 1761
+        },
+        {
+            "Project": "mdanics/fluttergram",
+            "Lines of Code": 1598
+        },
+        {
+            "Project": "adityanjr/covid19-tracker",
+            "Lines of Code": 1475
+        },
+        {
+            "Project": "vellt/Movies-App-Flutter",
+            "Lines of Code": 1337
+        },
+        {
+            "Project": "kevmoo/slide_puzzle",
+            "Lines of Code": 1308
+        },
+        {
+            "Project": "j-j-gajjar/Mathematics",
+            "Lines of Code": 1207
+        },
+        {
+            "Project": "ArizArmeidi/AnimSearch",
+            "Lines of Code": 826
+        },
+        {
+            "Project": "tsvillain/Wallbay",
+            "Lines of Code": 820
+        },
+        {
+            "Project": "RedBrogdon/flutterflip",
+            "Lines of Code": 594
+        },
+        {
+            "Project": "MDSADABWASIM/Toughest",
+            "Lines of Code": 431
+        },
+        {
+            "Project": "j-j-gajjar/FLUTTER_NewsApp",
+            "Lines of Code": 335
+        }
+    ],
+    "complexity": [
+        {
+            "Project": "proninyaroslav/libretrack",
+            "Complexity": 5453
+        },
+        {
+            "Project": "invoiceninja/admin-portal",
+            "Complexity": 3998
+        },
+        {
+            "Project": "proninyaroslav/blink-comparison",
+            "Complexity": 2926
+        },
+        {
+            "Project": "JoinSEEDS/seeds_light_wallet",
+            "Complexity": 2245
+        },
+        {
+            "Project": "Suwayomi/Tachidesk-Sorayomi",
+            "Complexity": 1751
+        },
+        {
+            "Project": "juniorise/spooky-mb",
+            "Complexity": 1478
+        },
+        {
+            "Project": "openfoodfacts/smooth-app",
+            "Complexity": 1158
+        },
+        {
+            "Project": "wger-project/flutter",
+            "Complexity": 704
+        },
+        {
+            "Project": "4seer/openflutterecommerceapp",
+            "Complexity": 670
+        },
+        {
+            "Project": "immich-app/immich",
+            "Complexity": 639
+        },
+        {
+            "Project": "hungps/flutter_pokedex",
+            "Complexity": 546
+        },
+        {
+            "Project": "Widle-Studio/Grocery-App",
+            "Complexity": 503
+        },
+        {
+            "Project": "moda20/flutter-tunein",
+            "Complexity": 377
+        },
+        {
+            "Project": "CarGuo/gsy_github_app_flutter",
+            "Complexity": 361
+        },
+        {
+            "Project": "jesusrp98/spacex-go",
+            "Complexity": 341
+        },
+        {
+            "Project": "jaysavsani07/math-metrix",
+            "Complexity": 291
+        },
+        {
+            "Project": "EnjoyingFOSS/feeel",
+            "Complexity": 289
+        },
+        {
+            "Project": "woosignal/flutter-woocommerce-app",
+            "Complexity": 281
+        },
+        {
+            "Project": "ReceiptManager/receipt-manager-app",
+            "Complexity": 271
+        },
+        {
+            "Project": "hamaluik/timecop",
+            "Complexity": 268
+        },
+        {
+            "Project": "mateusz-bak/openreads",
+            "Complexity": 261
+        },
+        {
+            "Project": "jogboms/tailor_made",
+            "Complexity": 233
+        },
+        {
+            "Project": "devclub-iitd/ShareACab",
+            "Complexity": 207
+        },
+        {
+            "Project": "o-ifeanyi/musicPlayer",
+            "Complexity": 206
+        },
+        {
+            "Project": "piggyvault/piggyvault",
+            "Complexity": 187
+        },
+        {
+            "Project": "KyleKun/one_second_diary",
+            "Complexity": 186
+        },
+        {
+            "Project": "burhanrashid52/WhatTodo",
+            "Complexity": 177
+        },
+        {
+            "Project": "kevmoo/slide_puzzle",
+            "Complexity": 164
+        },
+        {
+            "Project": "LaCoro/ConsumerFlutterApp",
+            "Complexity": 163
+        },
+        {
+            "Project": "deandreamatias/tv-randshow",
+            "Complexity": 162
+        },
+        {
+            "Project": "TheAlphamerc/flutter_twitter_clone",
+            "Complexity": 144
+        },
+        {
+            "Project": "Spyy004/LifeList",
+            "Complexity": 130
+        },
+        {
+            "Project": "simonbengtsson/airdash",
+            "Complexity": 118
+        },
+        {
+            "Project": "adityanjr/covid19-tracker",
+            "Complexity": 99
+        },
+        {
+            "Project": "JideGuru/FlutterEbookApp",
+            "Complexity": 98
+        },
+        {
+            "Project": "mdanics/fluttergram",
+            "Complexity": 91
+        },
+        {
+            "Project": "tsvillain/Wallbay",
+            "Complexity": 73
+        },
+        {
+            "Project": "vellt/Movies-App-Flutter",
+            "Complexity": 54
+        },
+        {
+            "Project": "ArizArmeidi/FlutterWeather",
+            "Complexity": 48
+        },
+        {
+            "Project": "ArizArmeidi/AnimSearch",
+            "Complexity": 35
+        },
+        {
+            "Project": "pichillilorenzo/flutter_browser_app",
+            "Complexity": 29
+        },
+        {
+            "Project": "MDSADABWASIM/Toughest",
+            "Complexity": 27
+        },
+        {
+            "Project": "RedBrogdon/flutterflip",
+            "Complexity": 22
+        },
+        {
+            "Project": "j-j-gajjar/FLUTTER_NewsApp",
+            "Complexity": 3
+        },
+        {
+            "Project": "j-j-gajjar/Mathematics",
+            "Complexity": 1
+        }
+    ],
+    "duplicated_lines_density": [
+        {
+            "Project": "proninyaroslav/libretrack",
+            "Duplicated Lines Density": 9.1
+        },
+        {
+            "Project": "piggyvault/piggyvault",
+            "Duplicated Lines Density": 7.5
+        },
+        {
+            "Project": "moda20/flutter-tunein",
+            "Duplicated Lines Density": 7.0
+        },
+        {
+            "Project": "devclub-iitd/ShareACab",
+            "Duplicated Lines Density": 4.4
+        },
+        {
+            "Project": "Suwayomi/Tachidesk-Sorayomi",
+            "Duplicated Lines Density": 4.0
+        },
+        {
+            "Project": "invoiceninja/admin-portal",
+            "Duplicated Lines Density": 3.6
+        },
+        {
+            "Project": "proninyaroslav/blink-comparison",
+            "Duplicated Lines Density": 2.6
+        },
+        {
+            "Project": "woosignal/flutter-woocommerce-app",
+            "Duplicated Lines Density": 2.4
+        },
+        {
+            "Project": "JoinSEEDS/seeds_light_wallet",
+            "Duplicated Lines Density": 2.2
+        },
+        {
+            "Project": "hungps/flutter_pokedex",
+            "Duplicated Lines Density": 1.3
+        },
+        {
+            "Project": "TheAlphamerc/flutter_twitter_clone",
+            "Duplicated Lines Density": 1.3
+        },
+        {
+            "Project": "Widle-Studio/Grocery-App",
+            "Duplicated Lines Density": 1.3
+        },
+        {
+            "Project": "Spyy004/LifeList",
+            "Duplicated Lines Density": 0.9
+        },
+        {
+            "Project": "immich-app/immich",
+            "Duplicated Lines Density": 0.8
+        },
+        {
+            "Project": "mateusz-bak/openreads",
+            "Duplicated Lines Density": 0.7
+        },
+        {
+            "Project": "CarGuo/gsy_github_app_flutter",
+            "Duplicated Lines Density": 0.6
+        },
+        {
+            "Project": "openfoodfacts/smooth-app",
+            "Duplicated Lines Density": 0.2
+        }
+    ],
+    "vbps_vs_ncloc": [
+        {
+            "Project": "MDSADABWASIM/Toughest",
+            "VBP Count": 36,
+            "Lines of Code": 431,
+            "VBPs per 1000 LCNC": 83.52668213457076
+        },
+        {
+            "Project": "moda20/flutter-tunein",
+            "VBP Count": 1594,
+            "Lines of Code": 19511,
+            "VBPs per 1000 LCNC": 81.6975039721183
+        },
+        {
+            "Project": "burhanrashid52/WhatTodo",
+            "VBP Count": 162,
+            "Lines of Code": 2060,
+            "VBPs per 1000 LCNC": 78.64077669902912
+        },
+        {
+            "Project": "CarGuo/gsy_github_app_flutter",
+            "VBP Count": 1077,
+            "Lines of Code": 17018,
+            "VBPs per 1000 LCNC": 63.285932542014336
+        },
+        {
+            "Project": "mdanics/fluttergram",
+            "VBP Count": 88,
+            "Lines of Code": 1598,
+            "VBPs per 1000 LCNC": 55.06883604505632
+        },
+        {
+            "Project": "tsvillain/Wallbay",
+            "VBP Count": 42,
+            "Lines of Code": 820,
+            "VBPs per 1000 LCNC": 51.21951219512195
+        },
+        {
+            "Project": "ReceiptManager/receipt-manager-app",
+            "VBP Count": 110,
+            "Lines of Code": 2549,
+            "VBPs per 1000 LCNC": 43.15417810906238
+        },
+        {
+            "Project": "Widle-Studio/Grocery-App",
+            "VBP Count": 247,
+            "Lines of Code": 8827,
+            "VBPs per 1000 LCNC": 27.982326951399116
+        },
+        {
+            "Project": "adityanjr/covid19-tracker",
+            "VBP Count": 39,
+            "Lines of Code": 1475,
+            "VBPs per 1000 LCNC": 26.440677966101696
+        },
+        {
+            "Project": "ArizArmeidi/AnimSearch",
+            "VBP Count": 20,
+            "Lines of Code": 826,
+            "VBPs per 1000 LCNC": 24.213075060532688
+        },
+        {
+            "Project": "devclub-iitd/ShareACab",
+            "VBP Count": 109,
+            "Lines of Code": 4789,
+            "VBPs per 1000 LCNC": 22.76049279599081
+        },
+        {
+            "Project": "LaCoro/ConsumerFlutterApp",
+            "VBP Count": 72,
+            "Lines of Code": 3306,
+            "VBPs per 1000 LCNC": 21.77858439201452
+        },
+        {
+            "Project": "piggyvault/piggyvault",
+            "VBP Count": 232,
+            "Lines of Code": 10951,
+            "VBPs per 1000 LCNC": 21.185279883115697
+        },
+        {
+            "Project": "ArizArmeidi/FlutterWeather",
+            "VBP Count": 37,
+            "Lines of Code": 1761,
+            "VBPs per 1000 LCNC": 21.010789324247586
+        },
+        {
+            "Project": "woosignal/flutter-woocommerce-app",
+            "VBP Count": 196,
+            "Lines of Code": 9638,
+            "VBPs per 1000 LCNC": 20.33616932973646
+        },
+        {
+            "Project": "TheAlphamerc/flutter_twitter_clone",
+            "VBP Count": 203,
+            "Lines of Code": 10773,
+            "VBPs per 1000 LCNC": 18.84340480831709
+        },
+        {
+            "Project": "invoiceninja/admin-portal",
+            "VBP Count": 4696,
+            "Lines of Code": 258648,
+            "VBPs per 1000 LCNC": 18.155949398410193
+        },
+        {
+            "Project": "vellt/Movies-App-Flutter",
+            "VBP Count": 24,
+            "Lines of Code": 1337,
+            "VBPs per 1000 LCNC": 17.95063575168287
+        },
+        {
+            "Project": "o-ifeanyi/musicPlayer",
+            "VBP Count": 63,
+            "Lines of Code": 3639,
+            "VBPs per 1000 LCNC": 17.312448474855728
+        },
+        {
+            "Project": "jaysavsani07/math-metrix",
+            "VBP Count": 117,
+            "Lines of Code": 7462,
+            "VBPs per 1000 LCNC": 15.679442508710801
+        },
+        {
+            "Project": "jesusrp98/spacex-go",
+            "VBP Count": 67,
+            "Lines of Code": 4987,
+            "VBPs per 1000 LCNC": 13.434930820132344
+        },
+        {
+            "Project": "mateusz-bak/openreads",
+            "VBP Count": 127,
+            "Lines of Code": 15787,
+            "VBPs per 1000 LCNC": 8.044593653005638
+        },
+        {
+            "Project": "Spyy004/LifeList",
+            "VBP Count": 39,
+            "Lines of Code": 5769,
+            "VBPs per 1000 LCNC": 6.760270410816433
+        },
+        {
+            "Project": "hamaluik/timecop",
+            "VBP Count": 42,
+            "Lines of Code": 6878,
+            "VBPs per 1000 LCNC": 6.106426286711254
+        },
+        {
+            "Project": "JoinSEEDS/seeds_light_wallet",
+            "VBP Count": 265,
+            "Lines of Code": 45158,
+            "VBPs per 1000 LCNC": 5.868284689313079
+        },
+        {
+            "Project": "KyleKun/one_second_diary",
+            "VBP Count": 48,
+            "Lines of Code": 8220,
+            "VBPs per 1000 LCNC": 5.839416058394161
+        },
+        {
+            "Project": "immich-app/immich",
+            "VBP Count": 162,
+            "Lines of Code": 30997,
+            "VBPs per 1000 LCNC": 5.226312223763591
+        },
+        {
+            "Project": "4seer/openflutterecommerceapp",
+            "VBP Count": 60,
+            "Lines of Code": 11576,
+            "VBPs per 1000 LCNC": 5.183137525915687
+        },
+        {
+            "Project": "wger-project/flutter",
+            "VBP Count": 44,
+            "Lines of Code": 12997,
+            "VBPs per 1000 LCNC": 3.3853966299915363
+        },
+        {
+            "Project": "RedBrogdon/flutterflip",
+            "VBP Count": 1,
+            "Lines of Code": 594,
+            "VBPs per 1000 LCNC": 1.6835016835016834
+        },
+        {
+            "Project": "proninyaroslav/blink-comparison",
+            "VBP Count": 40,
+            "Lines of Code": 36974,
+            "VBPs per 1000 LCNC": 1.0818412938821875
+        },
+        {
+            "Project": "pichillilorenzo/flutter_browser_app",
+            "VBP Count": 7,
+            "Lines of Code": 7508,
+            "VBPs per 1000 LCNC": 0.9323388385721897
+        },
+        {
+            "Project": "JideGuru/FlutterEbookApp",
+            "VBP Count": 3,
+            "Lines of Code": 3429,
+            "VBPs per 1000 LCNC": 0.8748906386701663
+        },
+        {
+            "Project": "proninyaroslav/libretrack",
+            "VBP Count": 50,
+            "Lines of Code": 70977,
+            "VBPs per 1000 LCNC": 0.704453555377094
+        },
+        {
+            "Project": "simonbengtsson/airdash",
+            "VBP Count": 1,
+            "Lines of Code": 3136,
+            "VBPs per 1000 LCNC": 0.31887755102040816
+        }
+    ],
+    "vbps_vs_complexity": [
+        {
+            "Project": "proninyaroslav/libretrack",
+            "VBP Count": 50,
+            "Complexity": 5453
+        },
+        {
+            "Project": "invoiceninja/admin-portal",
+            "VBP Count": 4696,
+            "Complexity": 3998
+        },
+        {
+            "Project": "proninyaroslav/blink-comparison",
+            "VBP Count": 40,
+            "Complexity": 2926
+        },
+        {
+            "Project": "JoinSEEDS/seeds_light_wallet",
+            "VBP Count": 265,
+            "Complexity": 2245
+        },
+        {
+            "Project": "wger-project/flutter",
+            "VBP Count": 44,
+            "Complexity": 704
+        },
+        {
+            "Project": "4seer/openflutterecommerceapp",
+            "VBP Count": 60,
+            "Complexity": 670
+        },
+        {
+            "Project": "immich-app/immich",
+            "VBP Count": 162,
+            "Complexity": 639
+        },
+        {
+            "Project": "Widle-Studio/Grocery-App",
+            "VBP Count": 247,
+            "Complexity": 503
+        },
+        {
+            "Project": "moda20/flutter-tunein",
+            "VBP Count": 1594,
+            "Complexity": 377
+        },
+        {
+            "Project": "CarGuo/gsy_github_app_flutter",
+            "VBP Count": 1077,
+            "Complexity": 361
+        },
+        {
+            "Project": "jesusrp98/spacex-go",
+            "VBP Count": 67,
+            "Complexity": 341
+        },
+        {
+            "Project": "jaysavsani07/math-metrix",
+            "VBP Count": 117,
+            "Complexity": 291
+        },
+        {
+            "Project": "woosignal/flutter-woocommerce-app",
+            "VBP Count": 196,
+            "Complexity": 281
+        },
+        {
+            "Project": "ReceiptManager/receipt-manager-app",
+            "VBP Count": 110,
+            "Complexity": 271
+        },
+        {
+            "Project": "hamaluik/timecop",
+            "VBP Count": 42,
+            "Complexity": 268
+        },
+        {
+            "Project": "mateusz-bak/openreads",
+            "VBP Count": 127,
+            "Complexity": 261
+        },
+        {
+            "Project": "devclub-iitd/ShareACab",
+            "VBP Count": 109,
+            "Complexity": 207
+        },
+        {
+            "Project": "o-ifeanyi/musicPlayer",
+            "VBP Count": 63,
+            "Complexity": 206
+        },
+        {
+            "Project": "piggyvault/piggyvault",
+            "VBP Count": 232,
+            "Complexity": 187
+        },
+        {
+            "Project": "KyleKun/one_second_diary",
+            "VBP Count": 48,
+            "Complexity": 186
+        },
+        {
+            "Project": "burhanrashid52/WhatTodo",
+            "VBP Count": 162,
+            "Complexity": 177
+        },
+        {
+            "Project": "LaCoro/ConsumerFlutterApp",
+            "VBP Count": 72,
+            "Complexity": 163
+        },
+        {
+            "Project": "TheAlphamerc/flutter_twitter_clone",
+            "VBP Count": 203,
+            "Complexity": 144
+        },
+        {
+            "Project": "Spyy004/LifeList",
+            "VBP Count": 39,
+            "Complexity": 130
+        },
+        {
+            "Project": "simonbengtsson/airdash",
+            "VBP Count": 1,
+            "Complexity": 118
+        },
+        {
+            "Project": "adityanjr/covid19-tracker",
+            "VBP Count": 39,
+            "Complexity": 99
+        },
+        {
+            "Project": "JideGuru/FlutterEbookApp",
+            "VBP Count": 3,
+            "Complexity": 98
+        },
+        {
+            "Project": "mdanics/fluttergram",
+            "VBP Count": 88,
+            "Complexity": 91
+        },
+        {
+            "Project": "tsvillain/Wallbay",
+            "VBP Count": 42,
+            "Complexity": 73
+        },
+        {
+            "Project": "vellt/Movies-App-Flutter",
+            "VBP Count": 24,
+            "Complexity": 54
+        },
+        {
+            "Project": "ArizArmeidi/FlutterWeather",
+            "VBP Count": 37,
+            "Complexity": 48
+        },
+        {
+            "Project": "ArizArmeidi/AnimSearch",
+            "VBP Count": 20,
+            "Complexity": 35
+        },
+        {
+            "Project": "pichillilorenzo/flutter_browser_app",
+            "VBP Count": 7,
+            "Complexity": 29
+        },
+        {
+            "Project": "MDSADABWASIM/Toughest",
+            "VBP Count": 36,
+            "Complexity": 27
+        },
+        {
+            "Project": "RedBrogdon/flutterflip",
+            "VBP Count": 1,
+            "Complexity": 22
+        }
+    ],
+    "correlation_vbp_loc": 0.8978489103713219,
+    "correlation_vbp_complexity": 0.45086269580464755
+}
