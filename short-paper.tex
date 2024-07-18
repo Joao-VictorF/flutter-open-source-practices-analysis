@@ -43,8 +43,6 @@
 
 \sloppy
 
-%\title{INVESTIGAÇÃO DA ADESÃO DE BOAS PRÁTICAS DE DESENVOLVIMENTO EM PROJETOS OPEN SOURCE FLUTTER: UMA ANÁLISE DE CÓDIGO E MANUTENIBILIDADE}
-
 \title{Análise da Aderência às Boas Práticas de Desenvolvimento em Projetos Open Source Flutter: Primeiros Insights}
 \author{Anonymous\inst{1}}
 
@@ -55,67 +53,60 @@
 \maketitle
 
 \begin{abstract}
-This research investigates adherence to best development practices in open-source Flutter projects, focusing on code quality and maintainability. We analyzed 45 projects using SonarQube to identify Best Practice Violations (BPVs). A total of 10,120 BPVs were found, distributed across three severities: 5,149 Minor, 4,273 Major, and 698 Critical. We calculated the Pearson correlation coefficient to confirm the relationship between BPVs and non-commenting lines of code (NCLOC) and between BPVs and cyclomatic complexity. We observed a strong correlation (0.8978) between BPVs and NCLOC, and a moderate correlation (0.4509) between BPVs and complexity. These findings highlight areas for Flutter developers to improve code quality.
+This research investigates adherence to development practices in open-source Flutter projects, focusing on code quality and maintainability. We analyzed 45 projects using SonarQube to identify Best Practice Violations (BPVs). A total of 10,120 BPVs were found, distributed across three severities: 5,149 minor, 4,273 major, and 698 critical violations. We calculated the Pearson correlation coefficient to confirm the relationship between BPVs and non-commenting lines of code (NCLOC) and between BPVs and cyclomatic complexity. We observed a strong correlation (0.8978) between BPVs and NCLOC, and a moderate correlation (0.4509) between BPVs and complexity. These results indicate, for the studied context, that the best practices recommended by the Dart main team are not being followed and that there is a need for improvement in the quality of Flutter application code..
 \end{abstract}
      
 \begin{resumo} 
-Esta pesquisa investiga a adesão às melhores práticas de desenvolvimento em projetos open-source Flutter, focando na qualidade e manutenibilidade do código. Analisamos 45 projetos utilizando SonarQube para identificar Violações de Boas Práticas (VBPs). Foram encontradas 10.120 VBPs, distribuídas em três severidades: 5.149 Leves, 4.273 Graves e 698 Críticas. Calculamos o coeficiente de correlação de Pearson para confirmar a relação entre VBPs e linhas de código (LCNC) e entre VBPs e complexidade ciclomática. Observamos uma correlação forte (0.8978) entre VBPs e LCNC, e uma correlação moderada (0.4509) entre VBPs e complexidade. Esses achados destacam áreas para os desenvolvedores Flutter melhorarem a qualidade do código.
+Esta pesquisa investiga a adesão às melhores práticas de desenvolvimento em projetos open-source Flutter, focando na qualidade e manutenibilidade do código. Foram analisados 45 projetos utilizando o SonarQube para identificar Violações de Boas Práticas (VBPs). Foram encontradas 10.120 VBPs, distribuídas em três severidades: 5.149 Leves, 4.273 Graves e 698 Críticas. O coeficiente de correlação de Pearson foi calculado para confirmar a relação entre VBPs e linhas de código (LCNC) e entre VBPs e complexidade ciclomática. Observou-se uma correlação forte (0,8978) entre VBPs e LCNC, e uma correlação moderada (0,4509) entre VBPs e complexidade. Esses resultados indicam, para o contexto estudado, que as boas práticas recomendadas pela equipe do Dart não estão sendo seguidas e que existe uma necessidade de melhoria na qualidade do código de aplicações Flutter.
 \end{resumo}
 
 \section{Introdução}
-A evolução tecnológica acelerada tem modificado substancialmente nossa interação com o mundo digital, com os dispositivos móveis emergindo como agentes principais dessa transformação. No Brasil, a média de 1,2 smartphones por habitante causa uma demanda crescente por serviços digitais e aplicativos móveis. Em 2022, por exemplo, os investimentos em tecnologia da informação (TI) corresponderam a 9\% do faturamento das empresas, refletindo também em um aumento significativo no desenvolvimento de aplicativos móveis \cite{FGVcia2023}.
+A evolução tecnológica acelerada tem modificado substancialmente a interação com o mundo digital, com os dispositivos móveis emergindo como agentes principais dessa transformação. No Brasil, a média de 1,2 smartphones por habitante causa uma demanda crescente por serviços digitais e aplicativos móveis. Em 2022, por exemplo, os investimentos em tecnologia da informação (TI) corresponderam a 9\% do faturamento das empresas, refletindo também em um aumento significativo no desenvolvimento de aplicativos móveis \cite{FGVcia2023}.
 
-Lançado pelo Google em 2017, o Flutter é um \textit{framework} de código aberto que se tornou popular por permitir que desenvolvedores criem aplicativos que funcionam em múltiplos sistemas operacionais, como Android e iOS, com mínimas alterações no código-fonte, tornando-se uma escolha popular para desenvolvimento multiplataforma \cite{flutter}. Utilizando a linguagem de programação Dart, também desenvolvida pelo Google, o Flutter facilita a escrita de código de alta qualidade e a manutenção a longo prazo. Além disso, se destaca pelo motor gráfico próprio, que oferece consistência e desempenho em diferentes plataformas, e pelo rico ecossistema de pacotes e plugins disponível no Pub, o gerenciador de pacotes do Dart.
+Lançado pelo Google em 2017, o Flutter é um \textit{framework} de código aberto que se tornou popular por permitir que desenvolvedores criem aplicativos que funcionam em múltiplos sistemas operacionais, como Android e iOS, com mínimas alterações no código-fonte \cite{flutter}. Utilizando a linguagem de programação Dart, também desenvolvida pelo Google, o Flutter facilita a escrita de código e a manutenção a longo prazo. Além disso, se destaca pelo motor gráfico próprio, que oferece consistência e desempenho em diferentes plataformas, e pelo ecossistema de pacotes e \textit{plugins} disponíveis no Pub, o gerenciador de pacotes do Dart.
 
-Para garantir que os aplicativos desenvolvidos com Flutter mantenham sua robustez e sejam facilmente mantidos ao longo do tempo, é essencial adotar as melhores práticas de desenvolvimento. No contexto do Flutter, isso inclui seguir recomendações da equipe principal do Dart, como legibilidade, consistência, concisão e eficiência do código \cite{dartBestPractices}. Além disso, princípios de código limpo, como clareza, simplicidade e eficiência, além de técnicas de refatoração contínua \cite{fowler1999refactoring}, são fundamentais para assegurar a qualidade técnica do software e facilitar sua manutenção contínua.
+Para garantir que os aplicativos desenvolvidos com Flutter mantenham sua robustez e sejam facilmente mantidos ao longo do tempo, a equipe principal do Dart elaborou um conjunto de melhores práticas de desenvolvimento~\cite{dartBestPractices}. Inspirados em princípios do \textit{clean code} \cite{fowler1999refactoring}, as recomendações tem foco na legibilidade, consistência, concisão e eficiência do código \cite{dartBestPractices}. Essas diretrizes estão descritas no guia ``Effective Dart'', que inclui recomendações sobre estilo, documentação e práticas específicas para desenvolvimento em Dart e Flutter \cite{dartBestPractices}.
 
-Neste contexto, as Violações de Boas Práticas (VBPs) são definidas como desvios das diretrizes estabelecidas pela equipe principal do Dart para garantir a escrita de código claro, eficiente e de fácil manutenção. Essas diretrizes estão descritas no guia "Effective Dart", que inclui recomendações sobre estilo, documentação e práticas específicas para desenvolvimento em Dart e Flutter \cite{dartBestPractices}.
-
-Este estudo investiga a adesão às melhores práticas de programação recomendadas pelo time principal do Dart em projetos open source desenvolvidos com Flutter, visando responder as seguintes questões de pesquisa:
+Neste contexto, este estudo investiga a adesão a essas melhores práticas de programação em projetos open source desenvolvidos com Flutter. Utilizou-se o conceito de Violações de Boas Práticas (VBPs), que são definidas como desvios das diretrizes estabelecidas pela equipe principal do Dart para garantir a escrita de código claro, eficiente e de fácil manutenção. A pesquisa visa responder as seguintes questões de pesquisa:
 \begin{itemize}    
-\item QP1- Qual a prevalência de violações das melhores práticas recomendadas?
-\item QP2- Com que frequência essas práticas são violadas?
-\item QP3- Quais tipos de práticas são mais frequentemente violadas?
+\item QP1- Qual a prevalência de VBPs nos projetos open source estudados?
+\item QP2- Quais tipos de práticas são mais frequentemente violadas?
 \end{itemize}
 
 \section{Metodologia}
 
-A metodologia adotada foi estruturada em quatro etapas principais: seleção de projetos, configuração das ferramentas de análise, coleta de dados e avaliação dos resultados. Além das VBPs, também analisamos a complexidade do código dos projetos, medida por métricas como a complexidade ciclomática e número de linhas de código não comentadas (LCNC) \cite{mccabe1976complexity}, para avaliar a qualidade dos projetos Flutter.
+A metodologia adotada foi estruturada em quatro etapas principais: seleção de projetos, configuração das ferramentas de análise, coleta de dados e avaliação dos resultados. Além das VBPs, também foi analisada a complexidade do código dos projetos, medida por métricas como a complexidade ciclomática e número de linhas de código não comentadas (LCNC) \cite{mccabe1976complexity}.
 
 \subsection{Seleção de Projetos}
-A seleção apropriada dos projetos é crucial para garantir a relevância da pesquisa. Inicialmente, foram considerados os projetos open source Flutter recomendados pela comunidade e disponíveis no repositório \textit{Open-Source Flutter Apps}\footnote{Tortuvshin Bayarsaikhan. Open-Source Flutter Apps. 2023. Disponível em: \url{https://github.com/tortuvshin/open-source-flutter-apps}. Acessado em: 08 de julho de 2024}, que contava com 152 projetos em 15 de maio de 2024. Aplicamos critérios específicos para filtrar esses projetos, resultando em uma amostra final de 50 projetos relevantes para análise:
+A seleção dos projetos seguiu diretrizes propostas em \cite{baltes2022sampling}. Inicialmente, foram considerados os projetos open source Flutter recomendados pela comunidade e disponíveis no repositório \textit{Open-Source Flutter Apps}\footnote{Tortuvshin Bayarsaikhan. Open-Source Flutter Apps. 2023. Disponível em: \url{https://github.com/tortuvshin/open-source-flutter-apps}. Acessado em: 08 de julho de 2024}, que contava com 152 projetos em 15 de maio de 2024. Os projetos do repositório foram filtrados seguindo critérios criados a partir das recomendações do estudo \cite{kalliamvakou2016depth}:
 \begin{enumerate}
-    \item No mínimo 30 commits, garantindo projetos com um histórico consistente de atividade.
+    \item Projetos com no mínimo 30 commits, garantindo projetos com um histórico consistente de atividade.
     \item Último commit feito nos últimos 3 anos, assegurando atividade recente.
     \item Mínimo de 30 estrelas no GitHub, indicando relevância na comunidade.
 \end{enumerate}
 
-Durante a fase de análise, 5 projetos foram excluídos devido a problemas técnicos. Entre os problemas encontrados estavam incompatibilidades de versões de dependências, incompatibilidades de bibliotecas e uso de bibliotecas descontinuadas.
+Dos 152 projetos, 50 preencheram os três critérios. Durante a fase de análise, mais 5 projetos foram excluídos devido a problemas técnicos (e.g.,incompatibilidades de versões de dependências e bibliotecas; uso de bibliotecas descontinuadas).
 
 
 \subsection{Procedimento e Análise dos Resultados}
-Utilizamos o SonarQube, uma plataforma reconhecida por sua capacidade de análise de código, para identificar VBPs. O SonarQube foi instalado em um container Docker para garantir um ambiente de análise controlado e consistente. Também configuramos o SonarScanner para coletar dados detalhados dos projetos.
+\textit{SonarQube}\footnote{\url{https://docs.sonarsource.com/sonarqube/latest/}} foi usado para identificar VBPs, sendo ele uma plataforma reconhecida por sua capacidade de análise de código\cite{marcilio2019static}. O SonarQube foi instalado em um container Docker para garantir um ambiente de análise controlado e consistente.
 
-A análise foi realizada utilizando o SonarScanner, configurado com um arquivo \texttt{sonar-project.properties} específico para cada projeto. Foram coletadas métricas como número de VBPs, severidade e complexidade ciclomática. Os seguintes passos foram seguidos para realizar a análise:
+A análise foi realizada utilizando o \textit{SonnarScanner}\footnote{\url{https://docs.sonarsource.com/sonarqube/9.9/analyzing-source-code/scanners/sonarscanner/}}, configurado com um arquivo \texttt{sonar-project.properties} específico para cada projeto. Foi utilizado um \textit{plugin} para análise de Dart e Flutter\footnote{\url{https://github.com/insideapp-oss/sonar-flutter}} para coletar métricas como número de VBPs, severidade e complexidade ciclomática. Os seguintes passos foram seguidos para realizar a análise:
 \begin{enumerate}
     \item Configuração do ambiente Docker e instalação do SonarQube.
     \item Download e instalação do plugin para análise de Dart e Flutter.
     \item Configuração e execução do SonarScanner nos projetos selecionados.
 \end{enumerate}
 
-Os dados foram coletados através da API do SonarQube e armazenados em formato JSON. Utilizamos scripts em Python para automatizar a coleta, tratamento e análise dos dados, garantindo consistência e precisão nos resultados. 
+Os dados foram coletados através da API do SonarQube e armazenados em formato JSON. Scripts em Python foram usados para automatizar a coleta, tratamento e análise dos dados, garantindo consistência e precisão nos resultados. 
 
-Os resultados foram analisados para identificar a prevalência e severidade das VBPs. Calculamos o coeficiente de correlação de Pearson para avaliar a relação entre VBPs e Linhas de Código Não Comentadas (LCNC) e entre VBPs e complexidade ciclomática. Os dados foram visualizados por meio de gráficos e tabelas para facilitar a interpretação.
-
-O dataset completo criado a partir desta pesquisa, contendo todas as VBPs encontradas e informações úteis sobre os projetos selecionados, está disponível online\footnote{\url{https://anonymous.4open.science/r/flutter-open-source-practices-analysis-F1F7/json-files/fetched_issues_data.json}}.
-
+Os resultados foram analisados para identificar a prevalência e severidade das VBPs. Calculou-se também o coeficiente de correlação de Pearson para avaliar a relação entre VBPs e Linhas de Código Não Comentadas (LCNC) e entre VBPs e complexidade ciclomática. O dataset completo criado a partir desta pesquisa, contendo todas as VBPs encontradas e informações úteis sobre os projetos selecionados, está disponível online\footnote{\url{https://anonymous.4open.science/r/flutter-open-source-practices-analysis-F1F7/json-files/fetched_issues_data.json}}.
 
 \section{Resultados}
+\subsection{QP1- Qual a prevalência de VBPs nos projetos open source estudados?}
+A análise dos 45 projetos open source desenvolvidos com Flutter revelou 10.120 VBPs. Estas foram distribuídas em três níveis de severidade: 5.149 menores, 4.273 maiores e 698 críticas, avaliando a adesão às melhores práticas de desenvolvimento.
 
-A análise dos 45 projetos open source desenvolvidos com Flutter, utilizando o SonarQube, revelou 10.120 VBPs. Estas foram distribuídas em três níveis de severidade: 5.149 menores, 4.273 maiores e 698 críticas, avaliando a adesão às melhores práticas de desenvolvimento.
-
-\subsection{Correlação entre VBPs, Linhas de Código Não Comentadas (LCNC) e Complexidade Ciclomática}
-Calculamos o coeficiente de correlação de Pearson para avaliar a relação entre VBPs e o número de LCNC, bem como entre VBPs e complexidade ciclomática. Na Figura~\ref{fig:vbps_vs_lcnc_and_vbps_vs_complexity}, observamos uma correlação forte (\textit{r} = 0.8978) entre VBPs e LCNC, indicando que mais linhas de código estão associadas a mais VBPs. Adicionalmente, a Figura~\ref{fig:vbps_vs_lcnc_and_vbps_vs_complexity} mostra uma correlação moderada (\textit{r} = 0.4509) entre VBPs e complexidade ciclomática, sugerindo que projetos com maior complexidade ciclomática tendem a ter mais VBPs.
+As correlações de Pearson calculadas estão na Figura~\ref{fig:vbps_vs_lcnc_and_vbps_vs_complexity}. Pode-se observar uma correlação forte (\textit{r} = 0,8978) entre VBPs e LCNC, indicando que mais linhas de código estão associadas a mais VBPs. Adicionalmente, a Figura~\ref{fig:vbps_vs_lcnc_and_vbps_vs_complexity} mostra uma correlação moderada (\textit{r} = 0,4509) entre VBPs e complexidade ciclomática, sugerindo que projetos com maior complexidade ciclomática tendem a ter mais VBPs.
 
 \begin{figure}[H]
 \centering
@@ -125,12 +116,12 @@ Calculamos o coeficiente de correlação de Pearson para avaliar a relação ent
 \label{fig:vbps_vs_lcnc_and_vbps_vs_complexity}
 \end{figure}
 
-\subsection{Regras mais violadas}
+\subsection{QP2- Quais tipos de práticas são mais frequentemente violadas?}
 A Figura~\ref{fig:rule_distribution} mostra a distribuição das cinco regras de boas práticas mais frequentemente violadas nos projetos analisados. A VBP mais frequente foi a EC (\textit{Exhaustive Cases}), com um total de 1544 violações. Esta regra verifica se todas as possibilidades em uma enumeração são cobertas, garantindo que o código seja robusto e não falhe ao encontrar casos inesperados. A alta frequência de violações desta regra indica que os desenvolvedores muitas vezes deixam de tratar todos os casos possíveis em enumerações, o que pode levar a erros em tempo de execução e a um código menos confiável.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.45\textwidth]{images/rule_distribution.png}
+\includegraphics[width=.5\textwidth]{images/rule_distribution.png}
 \caption{Distribuição das regras mais violadas}
 \label{fig:rule_distribution}
 \end{figure}
@@ -155,7 +146,7 @@ getUserType() {
 \subsection{Resultados Encontrados}
 Esta pesquisa analisou 45 projetos open-source Flutter para identificar Violações de Boas Práticas (VBPs), encontrando mais de 10.000 violações distribuídas entre diferentes severidades. Esses resultados destacam áreas específicas onde melhorias podem ser feitas para aderir melhor às práticas recomendadas e melhorar a qualidade e manutenibilidade do código em projetos Flutter. Os resultados desta pesquisa mostram uma forte correlação entre o número de VBPs e as linhas de código não comentadas (LCNC), indicando que projetos maiores tendem a apresentar mais violações. Também foi observada uma correlação moderada entre VBPs e complexidade ciclomática, sugerindo que a complexidade do código influencia a qualidade do software.
 
-As regras mais violadas, como Exhaustive Cases e Always Declare Return Types, indicam áreas onde os desenvolvedores devem concentrar esforços para melhorar a qualidade do código. %A utilização de práticas de codificação estruturada é essencial para a manutenibilidade do software, conforme destacado por Hunt e Thomas \cite{hunt1999pragmatic}.
+As regras mais violadas, como Exhaustive Cases e Always Declare Return Types, indicam áreas onde os desenvolvedores devem concentrar esforços para melhorar a qualidade do código.
 Para reduzir tais violações, uma abordagem eficaz é fomentar o uso de ferramentas de análise estática e verificação de código, como SonarQube e Dart Analyzer, durante o desenvolvimento.  Essas ferramentas podem identificar violações de boas práticas em tempo real, permitindo correções antes que se tornem significativas. A integração dessas ferramentas no processo de desenvolvimento contínuo pode ajudar a manter a qualidade do código, reduzir a complexidade ciclomática e evitar a duplicação de código \cite{kalagara2023measuring}.
 
 \subsection{Trabalhos Futuros}
