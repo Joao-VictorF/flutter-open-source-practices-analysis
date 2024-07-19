@@ -857,5 +857,7 @@
         }
     ],
     "correlation_vbp_loc": 0.8978489103713219,
-    "correlation_vbp_complexity": 0.45086269580464755
+    "correlation_vbp_complexity": 0.45086269580464755,
+    "mean_violations_per_file": 3.879299357053625,
+    "stddev_violations_per_file": 4.251855091265812
 }

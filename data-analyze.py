@@ -3,6 +3,7 @@ import json
 import matplotlib.pyplot as plt
 import os
 from scipy.stats import pearsonr
+import numpy as np
 
 severity_colors = ['mediumaquamarine', 'orangered', 'mediumpurple']
 rule_abbreviations = {
@@ -54,7 +55,7 @@ def analyze_component_distribution(df):
 def analyze_rule_distribution(df):
     rule_counts = df['Rule'].value_counts()
     return rule_counts.head(5)
-    # Top 70% of violated rules
+     # Top 70% of violated rules
     # total_issues = rule_counts.sum()
     # cumulative_percentage = rule_counts.cumsum() / total_issues
     # top_rules = rule_counts[cumulative_percentage <= 0.70]
@@ -94,33 +95,26 @@ def normalize_project_name(name):
     return name.replace(':', '/')
 
 def analyze_vbps_vs_ncloc(df, df_lines_of_code):
-    # Normalize project names in both dataframes
     df['Project'] = df['Project'].apply(normalize_project_name)
     df_lines_of_code['Project'] = df_lines_of_code['Project'].apply(normalize_project_name)
     
-    # Count VBPs per project
     vbp_counts = df['Project'].value_counts().reset_index()
     vbp_counts.columns = ['Project', 'VBP Count']
     
-    # Merge VBP counts with lines of code
     merged_df = pd.merge(vbp_counts, df_lines_of_code, on='Project', how='inner')
     
     if not merged_df.empty:
-        # Calculate VBPs per 1000 lines of code
         merged_df['VBPs per 1000 LCNC'] = (merged_df['VBP Count'] / merged_df['Lines of Code']) * 1000
     
     return merged_df
 
 def analyze_vbps_vs_complexity(df, df_complexity):
-    # Normalize project names in both dataframes
     df['Project'] = df['Project'].apply(normalize_project_name)
     df_complexity['Project'] = df_complexity['Project'].apply(normalize_project_name)
     
-    # Count VBPs per project
     vbp_counts = df['Project'].value_counts().reset_index()
     vbp_counts.columns = ['Project', 'VBP Count']
     
-    # Merge VBP counts with complexity
     merged_df = pd.merge(vbp_counts, df_complexity, on='Project', how='inner')
     
     return merged_df
@@ -144,14 +138,13 @@ def create_pie_chart_severity(severity_counts, save_path):
     plt.close()
 
 def create_component_distribution_chart(component_distribution, save_path):
-    plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos componentes
-    top_components = component_distribution.nlargest(20)  # Mostra os 20 componentes com mais problemas
+    plt.figure(figsize=(10, 12))
+    top_components = component_distribution.nlargest(20)
     top_components.sort_values(ascending=False, inplace=True)
     ax = top_components.plot(kind='barh', color='skyblue', ax=plt.gca())
     plt.title("Top 20 componentes com mais casos de VBP's")
-    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+    plt.tight_layout()
 
-    # Adiciona os valores nas barras
     for index, value in enumerate(top_components):
         ax.text(value + 0.5, index, f"{value}", va='center', ha='left')
 
@@ -159,19 +152,17 @@ def create_component_distribution_chart(component_distribution, save_path):
     plt.close()
 
 def create_rule_distribution_chart(rule_distribution, save_path):
-    # Mapeia os nomes completos das regras para suas siglas
     rule_distribution.index = rule_distribution.index.map(rule_abbreviations)
     
-    plt.figure(figsize=(10, 8))  # Aumenta a altura da figura para caber todos os nomes das regras
+    plt.figure(figsize=(10, 8))
     ax = rule_distribution.plot(kind='barh', color='skyblue', ax=plt.gca())
     plt.title('Top 5 Regras mais violadas', fontsize=20)
     plt.xlabel('Número de VBPs', fontsize=20)
     plt.ylabel('Regras', fontsize=20)
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
-    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+    plt.tight_layout()
 
-    # Adiciona os valores nas barras
     for index, value in enumerate(rule_distribution):
         ax.text(value, index, f"{value}", va='center', ha='right', fontsize=20)
     
@@ -179,21 +170,21 @@ def create_rule_distribution_chart(rule_distribution, save_path):
     plt.close()
 
 def create_code_lines_chart(df_lines_of_code, save_path):
-    plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos projetos
+    plt.figure(figsize=(10, 12))
     df_lines_of_code.sort_values(by='Lines of Code', ascending=False, inplace=True)
     ax = df_lines_of_code.plot(kind='barh', x='Project', y='Lines of Code', color='skyblue', ax=plt.gca())
     plt.title('Linhas de Código por Projeto')
-    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+    plt.tight_layout()
 
     plt.savefig(os.path.join(save_path, 'lines_of_code.png'))
     plt.close()
 
 def create_complexity_chart(df_complexity, save_path):
-    plt.figure(figsize=(10, 12))  # Aumenta a altura da figura para caber todos os nomes dos projetos
+    plt.figure(figsize=(10, 12))
     df_complexity.sort_values(by='Complexity', ascending=False, inplace=True)
     ax = df_complexity.plot(kind='barh', x='Project', y='Complexity', color='skyblue', ax=plt.gca())
     plt.title('Complexidade Ciclomática por Projeto')
-    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+    plt.tight_layout()
 
     for index, value in enumerate(df_complexity['Complexity']):
         ax.text(value + 1, index, f"{value:.2f}", va='center', ha='left')
@@ -206,7 +197,7 @@ def create_duplicated_lines_density_chart(df_duplicated_lines, save_path):
     df_duplicated_lines.sort_values(by='Duplicated Lines Density', ascending=False, inplace=True)
     ax = df_duplicated_lines.plot(kind='barh', x='Project', y='Duplicated Lines Density', color='skyblue', ax=plt.gca())
     plt.title('Densidade de Linhas Duplicadas por Projeto (%) (> 0)')
-    plt.tight_layout()  # Ajusta automaticamente o layout para evitar cortes
+    plt.tight_layout()
     
     for index, value in enumerate(df_duplicated_lines['Duplicated Lines Density']):
         ax.text(value + 0.1, index, f"{value:.2f}", va='center', ha='left')
@@ -268,6 +259,16 @@ def save_summary_to_json(summary, save_path):
     with open(os.path.join(save_path, 'summary.json'), 'w') as file:
         json.dump(summary, file, indent=4)
 
+def analyze_violations_per_file(df):
+    violations_per_file_list = []
+    project_files = df.groupby('Project')['Component'].nunique()
+    project_violations = df.groupby('Project')['Issue Key'].count()
+    for project in project_files.index:
+        if project in project_violations.index:
+            violations_per_file = project_violations[project] / project_files[project]
+            violations_per_file_list.append(violations_per_file)
+    return violations_per_file_list
+
 def visualize_data(df, data, save_path):
     if not os.path.exists(save_path):
         os.makedirs(save_path)
@@ -303,6 +304,10 @@ def visualize_data(df, data, save_path):
         create_scatter_plot(df_vbps_vs_complexity, 'Complexity', 'VBP Count', 'Correlação entre VBPs e Complexidade Ciclomática', 'Complexidade', 'Número de VBPs', save_path)
     else:
         correlation_vbp_complexity = None
+
+    violations_per_file = analyze_violations_per_file(df)
+    mean_violations_per_file = np.mean(violations_per_file)
+    stddev_violations_per_file = np.std(violations_per_file)
     
     summary = {
         'severity_counts': severity_counts.to_dict(),
@@ -314,7 +319,9 @@ def visualize_data(df, data, save_path):
         'vbps_vs_ncloc': df_vbps_vs_ncloc.to_dict(orient='records'),
         'vbps_vs_complexity': df_vbps_vs_complexity.to_dict(orient='records'),
         'correlation_vbp_loc': correlation_vbp_loc,
-        'correlation_vbp_complexity': correlation_vbp_complexity
+        'correlation_vbp_complexity': correlation_vbp_complexity,
+        'mean_violations_per_file': mean_violations_per_file,
+        'stddev_violations_per_file': stddev_violations_per_file
     }
     
     save_summary_to_json(summary, save_path)
