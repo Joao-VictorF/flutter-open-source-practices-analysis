@@ -89,15 +89,13 @@ Dos 152 projetos, 50 preencheram os três critérios. Durante a fase de análise
 
 
 \subsection{Procedimento e Análise dos Resultados}
-\textit{SonarQube}\footnote{\url{https://docs.sonarsource.com/sonarqube/latest/}} foi usado para identificar VBPs, sendo ele uma plataforma reconhecida por sua capacidade de análise de código\cite{marcilio2019static}. O SonarQube foi instalado em um container Docker para garantir um ambiente de análise controlado e consistente.
-
-A análise foi realizada utilizando o \textit{SonnarScanner}\footnote{\url{https://docs.sonarsource.com/sonarqube/9.9/analyzing-source-code/scanners/sonarscanner/}}, configurado com um arquivo \texttt{sonar-project.properties} específico para cada projeto. Foi utilizado um \textit{plugin} para análise de Dart e Flutter\footnote{\url{https://github.com/insideapp-oss/sonar-flutter}} para coletar métricas como número de VBPs, severidade e complexidade ciclomática. Os seguintes passos foram seguidos para realizar a análise:
+\textit{SonarQube}\footnote{\url{https://docs.sonarsource.com/sonarqube/}} foi usado para identificar VBPs, sendo ele uma plataforma reconhecida por sua capacidade de análise estática de código \cite{marcilio2019static}. Para análise, o \textit{SonnarScanner} foi configurado de forma específica para cada projeto e um \textit{plugin} para análise de Dart e Flutter\footnote{\url{https://github.com/insideapp-oss/sonar-flutter}} foi usado para coletar métricas como número de VBPs, severidade e complexidade ciclomática. Os seguintes passos foram seguidos:
 \begin{enumerate}
     \item Configuração do ambiente Docker e instalação do SonarQube.
     \item Download e instalação do plugin para análise de Dart e Flutter.
     \item Configuração e execução do SonarScanner nos projetos selecionados.
 \end{enumerate}
-
+ 
 Os dados foram coletados através da API do SonarQube e armazenados em formato JSON. Scripts em Python foram usados para automatizar a coleta, tratamento e análise dos dados, garantindo consistência e precisão nos resultados. 
 
 Os resultados foram analisados para identificar a prevalência e severidade das VBPs. Calculou-se também o coeficiente de correlação de Pearson para avaliar a relação entre VBPs e Linhas de Código Não Comentadas (LCNC) e entre VBPs e complexidade ciclomática. O dataset completo criado a partir desta pesquisa, contendo todas as VBPs encontradas e informações úteis sobre os projetos selecionados, está disponível online\footnote{\url{https://anonymous.4open.science/r/flutter-open-source-practices-analysis-F1F7/json-files/fetched_issues_data.json}}.
